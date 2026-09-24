@@ -3,8 +3,8 @@ Vietnamese Version: Đây là dự án cá nhân xây dựng một lab cơ bản
 
 English Version: This is a personal project to build a basic lab that simulates how an IPS/IDS operates in a small- to medium-sized enterprise (SME) environment. The entire lab is built using a virtualized infrastructure with VMware and GNS3.
 
-https://img.shields.io/badge/status-active-brightgreen
+![status](https://img.shields.io/badge/status-active-brightgreen)
 
-https://img.shields.io/badge/platform-GNS3%20%2F%20VMware-blue
+![platform](https://img.shields.io/badge/platform-GNS3%20%2F%20VMware-blue)
 
-https://img.shields.io/badge/stack-pfSense%20%7C%20Suricata%20%7C%20pfBlockerNG-red
+![stack](https://img.shields.io/badge/stack-pfSense%20%7C%20Suricata%20%7C%20pfBlockerNG-red)
