@@ -10,7 +10,7 @@ English Version: This is a personal project to build a basic lab that simulates 
 <p>
   <img src="https://img.shields.io/badge/status-active-brightgreen">
   <img src="https://img.shields.io/badge/platform-GNS3%20%2F%20VMware-blue">
-  <img src="https://img.shields.io/badge/stack-pfSense%20%7C%20Suricata%20%7C%20pfBlockerNG-red">
+  <img src="https://img.shields.io/badge/stack-pfSense%20%7C%20Suricata%20%7C%20pfBlockerNG%20%7C%20TrafficShaper-red">
 </p>
 
 </div>
