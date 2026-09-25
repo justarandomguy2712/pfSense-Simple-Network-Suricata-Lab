@@ -5,6 +5,7 @@
 
 Vào https://gns3.com/software/download-vm → chọn mục dành cho **VMware Workstation/Player**.
 Kiểm tra version GNS3 VM tải về **khớp với version GNS3 Desktop Client** đang cài trên máy.
+
 **NOTE**: Nếu GNS3 Desktop Client cũng đã cũ, cân nhắc tải bản GNS3 mới nhất luôn tại https://gns3.com/software/download.
 
 ### 1.2. Import vào VMware Workstation
