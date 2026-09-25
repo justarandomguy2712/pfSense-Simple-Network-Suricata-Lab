@@ -65,7 +65,7 @@ Sau khi cả 4 template đã sẵn sàng và test boot OK → **chụp Snapshot 
 
 ---
 
-## 2.Tổng quan Topology trong GNS3
+## 2. Tổng quan Topology trong GNS3
 
 | Kết nối | Chi tiết |
 |---|---|
