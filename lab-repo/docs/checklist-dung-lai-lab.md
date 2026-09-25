@@ -1,4 +1,4 @@
-# Checklist dựng lại lab pfSense – Suricata – Kali – WinServer2012
+# Các bước chi tiết lại lab pfSense – Suricata – Kali – WinServer2012
 
 
 ### 1.1. Tải GNS3 VM (.ova) — đúng bản khớp với GNS3 Desktop Client đang dùng
