@@ -1,32 +1,19 @@
 # Checklist dựng lại lab pfSense – Suricata – Kali – WinServer2012
 
-> Dùng để dựng lại toàn bộ mô hình sau sự cố mất Disk 2 của GNS3 VM. Làm theo đúng thứ tự từ trên xuống, tick ✅ sau mỗi bước đã xác minh.
 
----
+### 1.1. Tải GNS3 VM (.ova) — đúng bản khớp với GNS3 Desktop Client đang dùng
 
-## 0. Cài lại GNS3 VM từ đầu (quyết định: bỏ VM cũ, dựng mới hoàn toàn)
+Vào https://gns3.com/software/download-vm → chọn mục dành cho **VMware Workstation/Player**.
+Kiểm tra version GNS3 VM tải về **khớp với version GNS3 Desktop Client** đang cài trên máy.
+**NOTE**: Nếu GNS3 Desktop Client cũng đã cũ, cân nhắc tải bản GNS3 mới nhất luôn tại https://gns3.com/software/download.
 
-- [x] Đã Remove Hard Disk 2 hỏng khỏi GNS3 VM cũ.
-- [x] Quyết định: **không cố cứu VM cũ**, tải và dựng lại GNS3 VM mới hoàn toàn.
+### 1.2. Import vào VMware Workstation
 
-### 0.1. Xoá/gỡ VM cũ (dọn sạch trước khi làm mới)
+Mở VMware Workstation → **File → Open** → trỏ tới file vừa giải nén.
+Đặt tên VM (nên đặt là GNS3 VM) → chọn nơi lưu ổ đĩa (ưu tiên ổ SSD còn nhiều dung lượng trống, tối thiểu 50-100GB) → **Import**.
+Đợi quá trình import hoàn tất (vài phút tuỳ tốc độ đĩa).
 
-- [ ] Trong VMware Workstation → chuột phải **GNS3 VM** cũ → **Remove from Library** (chỉ gỡ khỏi danh sách, chưa xoá file) hoặc **Delete from Disk** nếu chắc chắn không cần gì trong đó nữa.
-- [ ] Trong GNS3 Desktop Client → Edit → Preferences → **GNS3 VM** → bỏ tick "Enable the GNS3 VM" tạm thời (tránh GNS3 cố kết nối tới VM không còn tồn tại trong lúc bạn cài lại).
-
-### 0.2. Tải GNS3 VM (.ova) — đúng bản khớp với GNS3 Desktop Client đang dùng
-
-- [ ] Vào https://gns3.com/software/download-vm → chọn mục dành cho **VMware Workstation/Player** → tải file `.zip` (giải nén ra sẽ có file `GNS3 VM.ova`).
-- [ ] Kiểm tra version GNS3 VM tải về **khớp với version GNS3 Desktop Client** đang cài trên máy bạn (Help → About trong GNS3 Client) — lệch version lớn dễ gây lỗi kết nối API giữa Client và VM.
-  - Nếu GNS3 Desktop Client cũng đã cũ, cân nhắc tải bản GNS3 mới nhất luôn tại https://gns3.com/software/download để đồng bộ cả 2.
-
-### 0.3. Import vào VMware Workstation
-
-- [ ] Mở VMware Workstation → **File → Open** → trỏ tới file `GNS3 VM.ova` vừa giải nén.
-- [ ] Đặt tên VM (mặc định "GNS3 VM" là được) → chọn nơi lưu ổ đĩa (ưu tiên ổ SSD còn nhiều dung lượng trống, tối thiểu 50-100GB) → **Import**.
-- [ ] Đợi quá trình import hoàn tất (vài phút tuỳ tốc độ đĩa).
-
-### 0.4. Cấu hình phần cứng cho GNS3 VM
+### 1.3. Cấu hình phần cứng cho GNS3 VM
 
 Chuột phải VM vừa import → **Edit virtual machine settings**:
 
@@ -35,54 +22,45 @@ Chuột phải VM vừa import → **Edit virtual machine settings**:
 | Memory | Tối thiểu 4GB, khuyến nghị **8GB** nếu máy thật đủ RAM (chạy đồng thời pfSense + WinServer2012 + Kali khá nặng) |
 | Processors | 2-4 core |
 | Network Adapter | **Host-only** (giữ nguyên mặc định — đây là kênh GNS3 Client giao tiếp với VM) |
-| Network Adapter 2 | **NAT** (giữ nguyên — cho GNS3 VM ra Internet thật, cần cho Suricata/pfBlockerNG tải rule sau này) |
-| Hard Disk | Chỉ dùng **1 ổ duy nhất** lần này — không thêm ổ 2 nữa (xem lưu ý tránh sự cố ở cuối file). Nếu dung lượng mặc định không đủ, **mở rộng ngay ổ 1 có sẵn** (Edit → Hard Disk → Expand) thay vì thêm ổ mới, để tránh lặp lại kiểu lỗi LVM 2 ổ như lần trước. |
+| Network Adapter 2 | **NAT** (giữ nguyên — cho GNS3 VM ra Internet thật, cần thiết cho Suricata/pfBlockerNG tải rule sau này) |
+| Hard Disk | Giữ nguyên mặc định theo VMware |
 
-- [ ] Nếu vừa Expand ổ đĩa: sau khi Power On, vào bên trong GNS3 VM chạy lệnh sau để mở rộng partition/filesystem theo đúng dung lượng mới:
-```
-sudo growpart /dev/sda 1
-sudo resize2fs /dev/sda1
-```
-(tên `/dev/sda1` có thể khác tuỳ bản GNS3 VM — kiểm tra bằng `lsblk` trước).
+### 1.4. Power On và lấy IP
 
-### 0.5. Power On và lấy IP
-
-- [ ] **Power on this virtual machine**.
-- [ ] Đợi tới màn hình console hiện thông tin dạng:
+**Power on this virtual machine**.
+Đợi tới màn hình console hiện thông tin dạng:
 ```
 Server version: x.x.x
 ...
 Management IP: 192.168.x.x (Host-only network)
 ```
-- [ ] Ghi lại IP đó (đây là IP để GNS3 Desktop Client kết nối tới).
+- ✅ *Kiểm tra*: từ máy thật, mở CMD → `ping <IP của GNS3>` → phải thông.
 
-- ✅ *Kiểm tra*: từ máy thật, mở CMD → `ping <IP vừa ghi>` → phải thông.
+### 1.5. Kết nối GNS3 Desktop Client với GNS3 VM mới
 
-### 0.6. Kết nối GNS3 Desktop Client với GNS3 VM mới
-
-- [ ] Mở GNS3 Desktop Client → Edit → Preferences → **GNS3 VM**.
-- [ ] Tick lại **"Enable the GNS3 VM"**.
-- [ ] Virtualization Engine: chọn **VMware**.
-- [ ] VM: chọn đúng tên VM vừa import.
-- [ ] Bấm **Apply** → **OK**.
-- [ ] Tạo project mới bất kỳ (VD "test-connection") → kéo thử 1 node đơn giản (VD Cloud) vào canvas.
+Mở GNS3 Desktop Client → Edit → Preferences → **GNS3 VM**.
+Tick lại **"Enable the GNS3 VM"**.
+Virtualization Engine: chọn **VMware**.
+VM: chọn đúng tên VM vừa import.
+Bấm **Apply** → **OK**.
+Tạo project mới bất kỳ → kéo thử 1 node đơn giản (VD: Cloud) vào để Test thử.
 
 - ✅ *Kiểm tra*: góc dưới bên phải GNS3 Client hiện chấm xanh "GNS3 VM (x.x.x.x)" — xác nhận kết nối thành công. Nếu chấm đỏ/không kết nối được, thử: Edit → Preferences → GNS3 VM → **Test Settings**, xem thông báo lỗi cụ thể.
 
-### 0.7. Thêm lại các Node Template đã mất (R1, pfSense, Kali, WinServer2012)
+### 1.6. Thêm lại các Node Template đã mất (R1, pfSense, Kali, WinServer2012)
 
 Vì toàn bộ ổ đĩa cũ (chứa image các node) đã mất theo Disk 2, cần cấu hình lại từ đầu:
 
 | Node | Cách thêm lại |
 |---|---|
-| **R1 (Cisco Router)** | Edit → Preferences → **Dynamips/IOS routers** → New → trỏ tới file `.bin` IOS image (nếu bạn còn lưu file này ở nơi khác ngoài GNS3 VM, VD ổ D máy thật — nếu mất luôn thì cần tìm lại nguồn IOS image cũ) |
-| **pfSense** | Edit → Preferences → **QEMU VMs** → New → hoặc dùng GNS3 Marketplace: File → Import appliance → tìm "pfSense" → làm theo wizard (cần file ISO pfSense — tải lại tại https://www.pfsense.org/download nếu không còn file cũ) |
-| **Kali Linux** | File → Import appliance → tìm "Kali Linux" trong Marketplace → GNS3 có thể tự tải ISO hoặc yêu cầu bạn cung cấp file đã tải sẵn |
-| **WindowsServer2012** | Edit → Preferences → **QEMU VMs** → New → cần file ISO Windows Server 2012 (tìm lại từ nguồn bạn dùng ban đầu, VD Microsoft Evaluation Center nếu dùng bản dùng thử) |
+| **R1 (Cisco Router)** | Edit → Preferences → **Dynamips/IOS routers** → New → trỏ tới file `.bin` IOS image (Tham khảo file IMG Cisco Router tại https://github.com/hegdepavankumar/Cisco-Images-for-GNS3-and-EVE-NG) |
+| **pfSense** |  Edit → Preferences → **VMware** → New → Add file ISO pfSense tại https://www.pfsense.org/download/  |
+| **Kali Linux** | Edit → Preferences → **VMware** → New → Add file ISO Kali Linux  |
+| **WindowsServer2012** | Edit → Preferences → **VMware** → New → Add file ISO Windows Server 2012 |
 
 - ✅ *Kiểm tra sau khi thêm mỗi template*: kéo thử node đó vào 1 project test → Start → phải boot lên bình thường trước khi dùng cho lab thật.
 
-- [ ] Sau khi cả 4 template đã sẵn sàng và test boot OK → **chụp Snapshot VMware ngay** cho GNS3 VM (đặt tên rõ, VD "GNS3VM-templates-ready") — đây là điểm khôi phục quan trọng nhất, làm xong bước này gần như không còn gì để mất nếu sự cố lặp lại.
+Sau khi cả 4 template đã sẵn sàng và test boot OK → **chụp Snapshot VMware ngay** cho GNS3 VM — đây là điểm khôi phục quan trọng nhất, làm xong bước này gần như không còn gì để mất nếu sự cố lặp lại.
 
 ---
 
@@ -96,8 +74,10 @@ Vì toàn bộ ổ đĩa cũ (chứa image các node) đã mất theo Disk 2, c�
 | Switch1 → KaliLinux-1 (e0) | |
 | pfSense-1 (LAN, e1) → WindowsServer2012-1 (e0) | Giữ nguyên như model gốc |
 
-- [ ] Không dùng OPT1/VLAN10/VLAN20 — mô hình cuối cùng chỉ có WAN + LAN trên pfSense.
-- [ ] Không dùng R2/NAT2 (đã bỏ từ đầu do tách biệt Kali khỏi WinServer).
+
+## Hình ảnh về mô hình lab:
+
+<img width="1131" height="480" alt="Screenshot 2026-09-10 205445" src="https://github.com/user-attachments/assets/ac1f4067-75b3-4208-879e-bb6d9d318571" />
 
 ---
 
@@ -105,42 +85,27 @@ Vì toàn bộ ổ đĩa cũ (chứa image các node) đã mất theo Disk 2, c�
 
 ```
 enable
-configure terminal
-interface fa1/0
- ip address 192.168.10.10 255.255.255.0
+configure terminal 
+interface FastEthernet0/0
+ ip address dhcp # Nhận ip động từ DHCP
+ ip nat outside  # ip này sẽ trỏ ra ngoài Internet cho quá trình NAT
  no shutdown
-end
-write memory
-```
-
-- ✅ *Kiểm tra*: `sh ip int bri` → Fa1/0 lên `up/up`, IP `192.168.10.10`.
-
-### Dọn route thừa (nếu import lại config cũ có dính)
-```
-conf t
-no ip route 192.168.20.0 255.255.255.0 192.168.10.1
-no ip route 192.168.30.0 255.255.255.0 192.168.10.1
-no ip route 192.168.40.0 255.255.255.0 192.168.10.1
-end
-```
-- ✅ *Kiểm tra*: `show ip route static` → không còn dòng nào liên quan 20/30/40.0/24.
-
-### (Tuỳ chọn) Cho pfSense ra Internet thật — cần cho Suricata tải ET Open + pfBlockerNG tải feed
-```
-conf t
-access-list 1 permit 192.168.10.0 0.0.0.255
-interface fa0/0
- ip nat outside
-interface fa1/0
- ip nat inside
 exit
-ip nat inside source list 1 interface fa0/0 overload
+interface FastEthernet1/0
+ ip address 192.168.10.10 255.255.255.0 # Gán ip tĩnh cho Gateway của mạng LAN
+ ip nat inside                          # Khai báo cổng bên trong quá trình NAT
+ no shutdown
+exit
+access-list 1 permit 192.168.10.0 0.0.0.255
+# Tạo danh sách ACL cho phép dải mạng 192.168.10.0/24 đi qua (0.0.0.255 là wildcard mask)
+ip nat inside source list 1 interface FastEthernet0/0 overload
+# Biên dịch các IP nội bộ (thuộc access-list 1) sang IP của cổng FastEthernet0/0 khi ra Internet. Overload cho phép nhiều máy dùng chung 1 IP public (PAT).
 end
 write memory
 ```
-- ✅ *Kiểm tra*: từ pfSense (Diagnostics → Ping) → ping `8.8.8.8` → phải thông.
 
----
+- ✅ *Kiểm tra quá trình config bằng câu lệnh sau*: `sh ip int bri` → Fa1/0 lên `up/up`, IP `192.168.10.10`.
+
 
 ## 3. Cấu hình Kali — IP tĩnh, không mất sau reboot
 
@@ -151,25 +116,16 @@ systemctl is-active NetworkManager
 
 **Nếu `active` (NetworkManager):**
 ```
-sudo nmcli connection modify "Wired connection 1" ipv4.addresses 192.168.10.50/24
-sudo nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.10.10
-sudo nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8"
-sudo nmcli connection modify "Wired connection 1" ipv4.method manual
-sudo nmcli connection up "Wired connection 1"
+sudo nmcli connection modify "eth0" ipv4.addresses 192.168.10.50/24
+sudo nmcli connection modify "etho" ipv4.gateway 192.168.10.10
+sudo nmcli connection modify "eth0" ipv4.dns "8.8.8.8"
+sudo nmcli connection modify "ethh0" ipv4.method manual
+sudo nmcli connection up "eth0"
 ```
 
-**Nếu dùng ifupdown (`/etc/network/interfaces`):**
-```
-auto eth0
-iface eth0 inet static
-    address 192.168.10.50
-    netmask 255.255.255.0
-    gateway 192.168.10.10
-    dns-nameservers 8.8.8.8
-```
-Sau đó: `sudo systemctl restart networking`
+- ✅ *Kiểm tra*: `reboot` → `ip a` và `ip route` phải tự có IP/gateway đúng, không cần gõ tay lại, và kết quả sẽ như hình sau:
 
-- ✅ *Kiểm tra*: `reboot` → `ip a` và `ip route` phải tự có IP/gateway đúng, không cần gõ tay lại.
+
 
 ---
 
