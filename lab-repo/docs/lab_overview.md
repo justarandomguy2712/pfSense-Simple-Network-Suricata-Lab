@@ -112,13 +112,13 @@ end
 write memory
 ```
 
-- ✅ *Kiểm tra quá trình config bằng câu lệnh sau*: `sh ip int bri` → Fa1/0 lên `up/up`, IP `192.168.10.10`.
+- ✅ *Kiểm tra quá trình config bằng câu lệnh sau*: `sh ip int bri & sh ip route`.
 
 
 <img width="893" height="163" alt="Screenshot 2026-09-25 224353" src="https://github.com/user-attachments/assets/5a621ab3-eec2-4bea-b990-9377d37e31a8" />
 
+<img width="570" height="292" alt="Screenshot 2026-09-25 224333" src="https://github.com/user-attachments/assets/edea6163-9e3f-47f8-aa7b-97c528836906" />
 
-<img width="893" height="163" alt="Screenshot 2026-09-25 224353" src="https://github.com/user-attachments/assets/1ecf9b39-4fea-46c2-be33-1686b70e0e03" />
 
 
 
