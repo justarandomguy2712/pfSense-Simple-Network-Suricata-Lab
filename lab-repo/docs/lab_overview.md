@@ -18,7 +18,7 @@ LAN (192.168.20.0/24)
    |
 WindowsServer2012
 ```
-## Hình ảnh minh họa lab sẽ cơ bản như này: 
+## Hình ảnh minh họa bài lab: 
 
 <img width="1131" height="480" alt="Screenshot 2026-09-10 205445" src="https://github.com/user-attachments/assets/14183846-9f5f-499c-9309-b537b28f2b6a" />
 
