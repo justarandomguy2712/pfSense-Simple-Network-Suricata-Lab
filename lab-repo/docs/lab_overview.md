@@ -36,6 +36,10 @@ Server version: x.x.x
 Management IP: 192.168.x.x (Host-only network)
 ```
 - ✅ *Kiểm tra*: từ máy thật, mở CMD → `ping <IP của GNS3>` → ping ok.
+## Hình ảnh chứng minh mạng đã thông:
+
+<img width="607" height="210" alt="Screenshot 2026-09-25 223703" src="https://github.com/user-attachments/assets/00bb2d5c-75a9-4a21-bf6b-d35063a9a986" />
+
 
 ### 1.5. Kết nối GNS3 Desktop Client với GNS3 VM mới
 
@@ -46,7 +50,9 @@ VM: chọn đúng tên VM vừa import.
 Bấm **Apply** → **OK**.
 Tạo project mới bất kỳ → kéo thử 1 node đơn giản (VD: Cloud) vào để Test thử.
 
-- ✅ *Kiểm tra*: góc dưới bên phải GNS3 Client hiện chấm xanh "GNS3 VM (x.x.x.x)" — xác nhận kết nối thành công. Nếu chấm đỏ/không kết nối được, thử: Edit → Preferences → GNS3 VM → **Test Settings**, xem thông báo lỗi cụ thể.
+- ✅ *Kiểm tra*: góc dưới bên phải GNS3 Client hiện chấm xanh "GNS3 VM (x.x.x.x)" — xác nhận kết nối thành công như sau:
+
+<img width="332" height="86" alt="Screenshot 2026-09-25 223603" src="https://github.com/user-attachments/assets/3d1de767-3d20-4cbe-813b-822f71506b5a" />
 
 ### 1.6. Thêm lại các Node Template đã mất (R1, pfSense, Kali, WinServer2012)
 
@@ -78,7 +84,8 @@ Sau khi cả 4 template đã sẵn sàng và test boot OK → **chụp Snapshot 
 
 ## Hình ảnh về mô hình lab:
 
-<img width="1131" height="480" alt="Screenshot 2026-09-10 205445" src="https://github.com/user-attachments/assets/ac1f4067-75b3-4208-879e-bb6d9d318571" />
+<img width="1259" height="657" alt="Screenshot 2026-09-25 223723" src="https://github.com/user-attachments/assets/afece914-bec8-4aa5-b3dd-510af89ff972" />
+
 
 ---
 
@@ -108,6 +115,13 @@ write memory
 - ✅ *Kiểm tra quá trình config bằng câu lệnh sau*: `sh ip int bri` → Fa1/0 lên `up/up`, IP `192.168.10.10`.
 
 
+<img width="893" height="163" alt="Screenshot 2026-09-25 224353" src="https://github.com/user-attachments/assets/5a621ab3-eec2-4bea-b990-9377d37e31a8" />
+
+
+<img width="893" height="163" alt="Screenshot 2026-09-25 224353" src="https://github.com/user-attachments/assets/1ecf9b39-4fea-46c2-be33-1686b70e0e03" />
+
+
+
 ## 4. Cấu hình Kali — IP tĩnh, không mất sau reboot
 
 **Xác định cơ chế mạng đang dùng:**
@@ -126,6 +140,14 @@ sudo nmcli connection up "eth0"
 
 - ✅ *Kiểm tra*: `reboot` → `ip a` và `ip route` phải tự có IP/gateway đúng, không cần gõ tay lại, và kết quả sẽ như hình sau:
 
+
+<img width="648" height="523" alt="Screenshot 2026-09-25 223446" src="https://github.com/user-attachments/assets/caf86a14-7aa7-4b9f-9400-02af842b98cb" />
+
+
+
+<img width="642" height="97" alt="Screenshot 2026-09-25 223501" src="https://github.com/user-attachments/assets/2835cb89-6490-45c6-b021-c5f6a45090eb" />
+
+  
 ## 4.1. Bảng địa chỉ IP sau cấu hình:
 
 | Thiết bị | Interface | IP |
@@ -141,11 +163,20 @@ sudo nmcli connection up "eth0"
 
 ## 5. Cấu hình pfSense — WAN
 
-- [ ] Interfaces → WAN → Static IPv4: `192.168.10.1/24`, Upstream Gateway: `WANGW – 192.168.10.10`.
-- [ ] Cuộn xuống **Reserved Networks** → **bỏ tick** cả 2 ô:
-  - ☐ Block private networks and loopback addresses
-  - ☐ Block bogon networks
-- [ ] Save → Apply Changes.
+Interfaces → WAN → Static IPv4: `192.168.10.1/24`, Upstream Gateway: `WANGW – 192.168.10.10`.
+Cuộn xuống **Reserved Networks** → **bỏ tick** cả 2 ô:
+  - Block private networks and loopback addresses
+  - Block bogon networks
+- Save → Apply Changes.
+
+## Hình ảnh cấu hình Interface WAN:
+
+<img width="1613" height="749" alt="Screenshot 2026-09-25 224556" src="https://github.com/user-attachments/assets/d9e435ea-0136-413a-866a-168d81a6081c" />
+
+
+<img width="1134" height="490" alt="Screenshot 2026-09-25 224607" src="https://github.com/user-attachments/assets/ab7c4a3b-39d2-4f4d-a6ef-6b2b3072328b" />
+
+
 
 - ✅ *Kiểm tra*: từ Kali, `ping 192.168.10.10` (R1) phải thông. Ping `192.168.10.1` (WAN pfSense) mặc định **sẽ không thông** — bình thường, do default-deny của WAN (không phải lỗi).
 - ✅ *Kiểm tra qua log*: Status → System Logs → Firewall → lọc `192.168.10.50` → phải thấy dòng **block** đúng thời điểm ping — xác nhận traffic đã tới pfSense, chỉ bị chặn đúng cơ chế.
