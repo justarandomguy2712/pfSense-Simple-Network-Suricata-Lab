@@ -126,7 +126,7 @@ sudo nmcli connection up "eth0"
 
 - ✅ *Kiểm tra*: `reboot` → `ip a` và `ip route` phải tự có IP/gateway đúng, không cần gõ tay lại, và kết quả sẽ như hình sau:
 
-## 4.1.Bảng địa chỉ IP:
+## 4.1.Bảng địa chỉ IP sau cấu hình:
 
 | Thiết bị | Interface | IP |
 |---|---|---|
