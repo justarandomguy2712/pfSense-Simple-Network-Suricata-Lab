@@ -65,7 +65,7 @@ Sau khi cả 4 template đã sẵn sàng và test boot OK → **chụp Snapshot 
 
 ---
 
-## 1. Dựng lại Topology trong GNS3
+## 2.Tổng quan Topology trong GNS3
 
 | Kết nối | Chi tiết |
 |---|---|
@@ -82,7 +82,7 @@ Sau khi cả 4 template đã sẵn sàng và test boot OK → **chụp Snapshot 
 
 ---
 
-## 2. Cấu hình R1
+## 3. Cấu hình R1
 
 ```
 enable
@@ -108,7 +108,7 @@ write memory
 - ✅ *Kiểm tra quá trình config bằng câu lệnh sau*: `sh ip int bri` → Fa1/0 lên `up/up`, IP `192.168.10.10`.
 
 
-## 3. Cấu hình Kali — IP tĩnh, không mất sau reboot
+## 4. Cấu hình Kali — IP tĩnh, không mất sau reboot
 
 **Xác định cơ chế mạng đang dùng:**
 ```
@@ -130,7 +130,7 @@ sudo nmcli connection up "eth0"
 
 ---
 
-## 4. Cấu hình pfSense — WAN
+## 5. Cấu hình pfSense — WAN
 
 - [ ] Interfaces → WAN → Static IPv4: `192.168.10.1/24`, Upstream Gateway: `WANGW – 192.168.10.10`.
 - [ ] Cuộn xuống **Reserved Networks** → **bỏ tick** cả 2 ô:
