@@ -35,7 +35,7 @@ Server version: x.x.x
 ...
 Management IP: 192.168.x.x (Host-only network)
 ```
-- ✅ *Kiểm tra*: từ máy thật, mở CMD → `ping <IP của GNS3>` → phải thông.
+- ✅ *Kiểm tra*: từ máy thật, mở CMD → `ping <IP của GNS3>` → ping ok.
 
 ### 1.5. Kết nối GNS3 Desktop Client với GNS3 VM mới
 
