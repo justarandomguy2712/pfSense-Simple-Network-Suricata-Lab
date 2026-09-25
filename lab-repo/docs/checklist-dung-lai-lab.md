@@ -126,6 +126,15 @@ sudo nmcli connection up "eth0"
 
 - ✅ *Kiểm tra*: `reboot` → `ip a` và `ip route` phải tự có IP/gateway đúng, không cần gõ tay lại, và kết quả sẽ như hình sau:
 
+## 4.1.Bảng địa chỉ IP:
+
+| Thiết bị | Interface | IP |
+|---|---|---|
+| R1 | Fa1/0 | 192.168.10.10/24 |
+| pfSense | WAN (em0) | 192.168.10.1/24 |
+| pfSense | LAN (em1) | 192.168.20.1/24 |
+| Kali Linux | eth0 | 192.168.10.50/24 |
+| Windows Server 2012 | eth0 | 192.168.20.2/24 |
 
 
 ---
