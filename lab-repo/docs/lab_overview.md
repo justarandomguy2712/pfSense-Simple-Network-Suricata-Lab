@@ -39,13 +39,8 @@ WindowsServer2012
 1. Tạo topology GNS3 theo đúng sơ đồ trên (R1 → Switch1 → pfSense WAN + Kali; pfSense LAN → WinServer).
 2. Cấu hình R1: đặt IP tĩnh Fa1/0, NAT overload ra NAT1 (nếu cần Internet thật cho pfSense).
 3. Cấu hình pfSense WAN: IP tĩnh 192.168.10.1/24, **bỏ tick** "Block private networks" và "Block bogon networks" (bắt buộc vì mạng lab dùng dải private làm WAN).
-4. Đặt IP tĩnh cho Kali (qua `nmcli` hoặc `/etc/network/interfaces`, không dùng lệnh `ip addr add` tạm thời vì sẽ mất sau reboot).
+4. Đặt IP tĩnh cho Kali.
 5. Windows Server 2012: đặt IP tĩnh, cài IIS (Web-Server role + FTP Service), bật Remote Desktop.
 6. NAT Port Forward trên pfSense: dùng Alias gộp các port cần expose (21, 80, 443, 445, 3389, 5985) trỏ vào IP LAN của WinServer.
 
-Xem chi tiết từng bước, kèm troubleshooting thực tế đã gặp (nested-NAT DNS failure, GNS3 vmnet exhaustion, đĩa VM bị mất...), tại [checklist-dung-lai-lab.md](checklist-dung-lai-lab.md).
 
-## Lưu ý thiết kế
-
-- Kali đặt ở phía **WAN** (không phải 1 VLAN/segment nội bộ riêng) để mô phỏng đúng kịch bản **attacker từ Internet**, không phải lateral-movement nội bộ.
-- Không dùng VLAN — dùng interface WAN/LAN đơn giản để tránh các vấn đề DHCP/trunk gặp phải khi thử nghiệm VLAN ban đầu.
