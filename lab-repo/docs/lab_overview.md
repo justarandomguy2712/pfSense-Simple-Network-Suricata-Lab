@@ -18,7 +18,7 @@ Mở VMware Workstation → **File → Open** → trỏ tới file vừa giải 
 
 Chuột phải VM vừa import → **Edit virtual machine settings**:
 
-| Thông số | Giá trị khuyến nghị |
+| Thông số | Cấu hình khuyên dùng |
 |---|---|
 | Memory | Tối thiểu 4GB, khuyến nghị **8GB** nếu máy thật đủ RAM (chạy đồng thời pfSense + WinServer2012 + Kali khá nặng) |
 | Processors | 2-4 core |
