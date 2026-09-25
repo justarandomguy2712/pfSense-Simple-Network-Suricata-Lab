@@ -1,4 +1,4 @@
-# Dựng lab từ đầu
+# Các Bước Dựng Lab
 
 Toàn bộ hệ thống được dựng trên GNS3 (chạy trong VMware Workstation), gồm 4 node: R1 (Cisco router, giả lập ISP), pfSense (NGFW), Kali Linux (attacker), Windows Server 2012 (target server).
 
@@ -18,6 +18,9 @@ LAN (192.168.20.0/24)
    |
 WindowsServer2012
 ```
+## Hình ảnh minh họa lab sẽ cơ bản như này: 
+
+<img width="1131" height="480" alt="Screenshot 2026-09-10 205445" src="https://github.com/user-attachments/assets/14183846-9f5f-499c-9309-b537b28f2b6a" />
 
 ## Bảng địa chỉ IP
 
@@ -28,6 +31,8 @@ WindowsServer2012
 | pfSense | LAN (em1) | 192.168.20.1/24 |
 | Kali Linux | eth0 | 192.168.10.50/24 |
 | Windows Server 2012 | eth0 | 192.168.20.2/24 |
+
+
 
 ## Các bước dựng lab
 
