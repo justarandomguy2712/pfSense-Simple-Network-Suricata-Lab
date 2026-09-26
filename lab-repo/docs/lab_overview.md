@@ -168,11 +168,13 @@ Cuộn xuống **Reserved Networks** → **bỏ tick** cả 2 ô:
   - Block private networks and loopback addresses
   - Block bogon networks
 - Save → Apply Changes.
+
+  
 **Giải thích nhanh tại sao cần bỏ tích hai mục này**:
   
-'Block bogon networks': Tính năng này vốn dùng để chặn các luồng dữ liệu giả mạo từ Internet. Tuy nhiên, do hệ thống đang được triển khai trên môi trường lab/ảo hóa cơ bản, việc tắt tính năng này là cần thiết để tránh tình trạng pfSense nhận diện nhầm và chặn các gói tin nội bộ hợp lệ.
+**Block bogon networks**: Tính năng này vốn dùng để chặn các luồng dữ liệu giả mạo từ Internet. Tuy nhiên, do hệ thống đang được triển khai trên môi trường lab/ảo hóa cơ bản, việc tắt tính năng này là cần thiết để tránh tình trạng pfSense nhận diện nhầm và chặn các gói tin nội bộ hợp lệ.
 
-'Block private networks and loopback addresses': Mặc định tính năng này là chặn các luồng dữ liệu giả mạo (IP Spoofing) mang địa chỉ nội bộ hoặc địa chỉ chưa được cấp phát đi vào hệ thống, nhưng mô hình lab này đều dùng dải 192.168.x.x nên phải bỏ tick để hệ thống mạng được hoạt động hiệu quả.
+**Block private networks and loopback addresses**: Mặc định tính năng này là chặn các luồng dữ liệu giả mạo (IP Spoofing) mang địa chỉ nội bộ hoặc địa chỉ chưa được cấp phát đi vào hệ thống, nhưng mô hình lab này đều dùng dải 192.168.x.x nên phải bỏ tick để hệ thống mạng được hoạt động hiệu quả.
 ## Hình ảnh cấu hình Interface WAN:
 
 <img width="1613" height="749" alt="Screenshot 2026-09-25 224556" src="https://github.com/user-attachments/assets/d9e435ea-0136-413a-866a-168d81a6081c" />
