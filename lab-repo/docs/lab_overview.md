@@ -148,7 +148,7 @@ sudo nmcli connection up "eth0"
 <img width="642" height="97" alt="Screenshot 2026-09-25 223501" src="https://github.com/user-attachments/assets/2835cb89-6490-45c6-b021-c5f6a45090eb" />
 
   
-## 4.1. Bảng địa chỉ IP sau cấu hình:
+### 4.1. Bảng địa chỉ IP sau cấu hình:
 
 | Thiết bị | Interface | IP |
 |---|---|---|
@@ -180,6 +180,8 @@ Cuộn xuống **Reserved Networks** → **bỏ tick** cả 2 ô:
 
 - ✅ *Kiểm tra*: từ Kali, `ping 192.168.10.10` (R1) phải thông. Ping `192.168.10.1` (WAN pfSense) mặc định **sẽ không thông** — bình thường, do default-deny của WAN (không phải lỗi).
 - ✅ *Kiểm tra qua log*: Status → System Logs → Firewall → lọc `192.168.10.50` → phải thấy dòng **block** đúng thời điểm ping — xác nhận traffic đã tới pfSense, chỉ bị chặn đúng cơ chế.
+ ## Hình ảnh xác nhận traffic từ 192.168.10.50 đã bị chặn:
+<img width="1137" height="103" alt="Screenshot 2026-09-26 160428" src="https://github.com/user-attachments/assets/3c886f0f-8c44-41c9-90d5-d5946a4acaee" />
 
 ---
 
@@ -190,6 +192,7 @@ Firewall → Aliases → tab IP → Add:
 | Name | Type | Value |
 |---|---|---|
 | `WinServer2012` | Host(s) | IP LAN thật của WinServer (VD `192.168.20.2`) |
+### Hình ảnh sau khi tạo Aliases:
 
 ### 5.2. Alias Port (mỗi port 1 dòng riêng, dùng nút "+")
 Firewall → Aliases → tab Port → Add, name `Lab_Ports`:
@@ -201,6 +204,9 @@ Firewall → Aliases → tab Port → Add, name `Lab_Ports`:
 3389
 5985
 ```
+### Hình ảnh sau khi tạo nhóm các Ports cần test như sau:
+<img width="1210" height="682" alt="Screenshot 2026-09-26 160457" src="https://github.com/user-attachments/assets/6dda39b9-c0bd-46d3-9cf4-f5ea8230141a" />
+
 
 ### 5.3. NAT Port Forward
 Firewall → NAT → Port Forward → Add:
