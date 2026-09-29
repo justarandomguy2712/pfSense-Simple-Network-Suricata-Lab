@@ -35,22 +35,42 @@ lab-repo/
 
 ## Cách dùng các thư mục template / How to use template directories
 
-Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem _Template-Report/README.md) / Each scenario/model directory follows the same template (see _Template-Report/README.md):
+Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem _Template-Report/README.md)
 
-1. **Mục tiêu** — kịch bản này chứng minh điều gì
-2. **Sơ đồ / vị trí trong topology**
-3. **Các bước cấu hình đã thực hiện**
-4. **Lệnh / công cụ sử dụng để kiểm thử**
-5. **Kết quả thu được** (kèm ảnh trong thư mục `screenshots/` con)
-6. **Vấn đề gặp phải & cách khắc phục**
-7. **Kết luận / đánh giá**
 
-Muốn thêm 1 kịch bản mới: copy nguyên thư mục `_template-kich-ban-moi/`, đổi tên thư mục và sửa tiêu đề trong README.md.
+Each scenario directory follows a standard template (refer to _Template-Report/README.md).
 
-## Tech Stack sử dụng
 
-`pfSense` · `Suricata` (IDS/IPS) · `pfBlockerNG-devel` · `GNS3` · `VMware Workstation` · `Kali Linux` · `Windows Server 2012` · `Cisco IOS`
+1. Mục tiêu | Objective: Kịch bản này chứng minh điều gì? / What does this scenario demonstrate?
 
+2. Sơ đồ mạng | Topology: Vị trí và sơ đồ thiết kế trong mạng. / Diagram and position within the network topology.
+
+3. Cấu hình | Configuration: Các bước thiết lập chi tiết đã thực hiện. / Detailed configuration steps performed.
+
+4. Kiểm thử | Testing: Các lệnh và công cụ được sử dụng. / Commands and tools used for testing.
+
+5. Kết quả | Results: Kết quả thu được (kèm hình ảnh minh họa trong thư mục con screenshots/). / Obtained results (with images provided in the screenshots/ subfolder).
+
+6. Khắc phục sự cố | Troubleshooting: Các vấn đề gặp phải và hướng giải quyết. / Issues encountered and their solutions.
+
+7. Kết luận | Conclusion: Đánh giá và tổng kết. / Final evaluation and summary.
+
+
+
+## Tech Stack sử dụng / Technology Stack
+
+- Firewall & Routing: pfSense, Cisco IOS
+
+- Security (IDS/IPS): Suricata, pfBlockerNG-devel
+
+- Virtualization & Emulation: GNS3, VMware WorkstatioN
+
+- Operating Systems: Kali Linux, Windows Server 2012
 ## Tác giả
+Manh Ha Nguyen
 
-Manh Ha Nguyen — Sinh viên Học viện Kỹ thuật Mật mã (KMA), chuyên ngành An toàn thông tin.
+
+🎓 Sinh viên chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật mã (KMA).
+
+🎓 Information Security Student - Academy of Cryptography Techniques (KMA).
+
