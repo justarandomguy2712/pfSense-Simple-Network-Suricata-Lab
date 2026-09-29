@@ -10,31 +10,32 @@ English Version: This is a personal project to build a basic lab that simulates 
 
 ---
 
-## Cấu trúc thư mục
+
+## Cấu trúc thư mục / Directory Structure
 
 ```
-├── 00-lab-setup/                     → Dựng lab: topology, GNS3 VM, cấu hình mạng nền
-├── 01-mo-hinh-1-perimeter-nat/       → Mô hình 1: NAT Port Forwarding, firewall biên
-├── 02-mo-hinh-2-ids-ips/             → Mô hình 2: Suricata IDS/IPS + pfBlockerNG
-│   ├── scenario-01-port-scan/
-│   ├── scenario-02-web-attack/
-│   ├── scenario-03-brute-force/
-│   ├── scenario-04-dos/
-│   └── scenario-05-ips-blocking/
-├── 03-mo-hinh-3-internet-control/    → Mô hình 3: Kiểm soát truy cập Internet nhân viên
-│   ├── dnsbl-social-media/
-│   ├── dnsbl-ads/
-│   ├── traffic-shaper/
-│   └── scheduled-blocking/
-├── 04-email-alerting/                → Cảnh báo qua Email khi Suricata phát hiện tấn công
-├── _template-kich-ban-moi/           → Thư mục mẫu — copy để tạo kịch bản mới
-├── scripts/                          → Script dùng chung
-└── reports/                          → Mẫu báo cáo tiến độ
+lab-repo/
+├── docs/
+└── scenarios/
+    ├── 01-perimeter-nat-portforward/
+    ├── 02-recon-scanning/
+    ├── 03-web-application-attacks/
+    ├── 04-credential-bruteforce/
+    ├── 05-denial-of-service/
+    ├── 06-ips-active-blocking/
+    ├── 07-pfblockerng-threat-intel/
+    ├── 08-dnsbl-social-media/
+    ├── 09-dnsbl-ads-blocking/
+    ├── 10-schedule-based-blocking/
+    ├── 11-Script/
+    ├── 12-email-alerting/
+    ├── 13-Template-Report/
+    └── README.md      
 ```
 
-## Cách dùng các thư mục template
+## Cách dùng các thư mục template / How to use template directories
 
-Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem `_template-kich-ban-moi/README.md`):
+Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem _Template-Report/README.md) / Each scenario/model directory follows the same template (see _Template-Report/README.md):
 
 1. **Mục tiêu** — kịch bản này chứng minh điều gì
 2. **Sơ đồ / vị trí trong topology**
@@ -46,10 +47,10 @@ Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem `_
 
 Muốn thêm 1 kịch bản mới: copy nguyên thư mục `_template-kich-ban-moi/`, đổi tên thư mục và sửa tiêu đề trong README.md.
 
-## Stack sử dụng
+## Tech Stack sử dụng
 
 `pfSense` · `Suricata` (IDS/IPS) · `pfBlockerNG-devel` · `GNS3` · `VMware Workstation` · `Kali Linux` · `Windows Server 2012` · `Cisco IOS`
 
 ## Tác giả
 
-Mr. Hà — Sinh viên Học viện Kỹ thuật Mật mã (KMA), chuyên ngành An toàn thông tin.
+Manh Ha Nguyen — Sinh viên Học viện Kỹ thuật Mật mã (KMA), chuyên ngành An toàn thông tin.
