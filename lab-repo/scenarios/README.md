@@ -13,6 +13,7 @@
 | [09](09-dnsbl-ads-blocking/) | DNSBL — Chặn quảng cáo | Mô hình 3 |
 | [10](10-traffic-shaper-bandwidth/) | Traffic Shaper — Băng thông | Mô hình 3 |
 | [11](11-schedule-based-blocking/) | Chặn theo lịch (giờ hành chính) | Mô hình 3 |
-| [12](12-email-alerting/) | Email cảnh báo tự động | Mô hình 2 |
+| [12](12-Script/) | Các scirpts đã sử dụng trong bài lab | 
+| [13](12-Template-Report/) | Template mẫu báo cáo | 
 
 Mỗi thư mục gồm: mục tiêu, điều kiện tiên quyết, lệnh chạy cụ thể, danh sách bằng chứng cần chụp (`screenshots/`), và kết quả mong đợi.
