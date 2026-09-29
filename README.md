@@ -68,7 +68,9 @@ Each scenario directory follows a standard template (refer to _Template-Report/R
 
 ## Tech Stack sử dụng / Technology Stack
 
-- Firewall & Routing: pfSense, Cisco IOS
+- Platform: GNS3
+
+- Firewall & Routing: pfSense, Cisco IOS, Node Ethernet Switching GNS3
 
 - Security (IDS/IPS): Suricata, pfBlockerNG-devel
 
