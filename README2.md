@@ -49,7 +49,7 @@ Each scenario directory follows a standard template (refer to _Template-Report/R
 
 4. Kiểm thử | Testing: Các lệnh và công cụ được sử dụng. / Commands and tools used for testing.
 
-5. Kết quả | Results: Kết quả thu được (kèm hình ảnh minh họa trong thư mục con screenshots/). / Obtained results (with images provided in the screenshots/ subfolder).
+5. Kết quả | Results: Kết quả thu được (kèm hình ảnh minh họa). / Obtained results (with images).
 
 6. Khắc phục sự cố | Troubleshooting: Các vấn đề gặp phải và hướng giải quyết. / Issues encountered and their solutions.
 
