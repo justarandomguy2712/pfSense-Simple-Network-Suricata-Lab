@@ -42,34 +42,22 @@ lab-repo/
     └── README.md      
 ```
 
-## Cách dùng các thư mục template / How to use template directories
+## Cách dùng các thư mục template | How to Use Template Directories
 
-Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem _Template-Report/README.md)
+Mỗi thư mục kịch bản/mô hình đều tuân theo cùng một khuôn mẫu  
+(xem `_Template-Report/README.md`).
 
+Each scenario directory follows a standard template  
+(refer to `_Template-Report/README.md`).
 
-Each scenario directory follows a standard template (refer to _Template-Report/README.md).
-
-
-1. Mục tiêu | Objective: Kịch bản này chứng minh điều gì? / **What does this scenario demonstrate?**
-
-2. Điều kiện xây dựng kịch bản | Scenario Development Basis: Mô phỏng các tình huống thực tế để kiểm tra và đánh giá khả năng hoạt động của hệ thống. / **Simulate real-world scenarios to test and evaluate system performance.**
-
-
-
-3. Cấu hình | Configuration: Các bước thiết lập chi tiết đã thực hiện. / **Detailed configuration steps performed.**
-
-
-
-
-4. Kiểm thử | Testing: Các lệnh và công cụ được sử dụng. / **Commands and tools used for testing.**
-
-
-
-5. Kết quả | Results: Kết quả thu được (kèm hình ảnh minh họa). / **Obtained results (With supporting images).**
-
-
-
-6. Kết quả mong đợi | Expected Results and Outcomes: Thu đủ dữ liệu đã yêu cầu và đưa ra đánh giá và kết luận. / **Collect the required data, followed by evaluation and conclusions.**
+| # | Nội dung | Content |
+|---|---|---|
+| 1 | **Mục tiêu** | **Objective** — Kịch bản này chứng minh điều gì?<br>*What does this scenario demonstrate?* |
+| 2 | **Xây dựng kịch bản** | **Scenario Development** — Mô phỏng các tình huống thực tế để kiểm tra và đánh giá hệ thống.<br>*Simulate real-world scenarios to test and evaluate system performance.* |
+| 3 | **Cấu hình** | **Configuration** — Các bước thiết lập chi tiết đã thực hiện.<br>*Detailed configuration steps performed.* |
+| 4 | **Kiểm thử** | **Testing** — Các lệnh và công cụ được sử dụng.<br>*Commands and tools used for testing.* |
+| 5 | **Kết quả** | **Results** — Kết quả thu được, kèm hình ảnh minh họa.<br>*Obtained results with supporting images.* |
+| 6 | **Kết quả mong đợi** | **Expected Results** — Thu thập đầy đủ dữ liệu cần thiết và đưa ra đánh giá, kết luận.<br>*Collect the required data, followed by evaluation and conclusions.* |
 
 
 
