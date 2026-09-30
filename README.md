@@ -50,7 +50,7 @@ Mỗi thư mục kịch bản/mô hình đều tuân theo cùng một khuôn m�
 Each scenario directory follows a standard template  
 (refer to `_Template-Report/README.md`).
 
-| # | Nội dung | Content |
+| # | Nội dung | Contents |
 |---|---|---|
 | 1 | **Mục tiêu** | **Objective** — Kịch bản này chứng minh điều gì?<br>*What does this scenario demonstrate?* |
 | 2 | **Xây dựng kịch bản** | **Scenario Development** — Mô phỏng các tình huống thực tế để kiểm tra và đánh giá hệ thống.<br>*Simulate real-world scenarios to test and evaluate system performance.* |
