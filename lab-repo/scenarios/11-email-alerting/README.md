@@ -38,8 +38,63 @@ App Password là mật khẩu 16 ký tự Google cấp riêng cho pfSense, dùng
   <br>
   <em>Hình 2 và 3: Email Test <code>suricata_mailer.php</code> được gửi về Gmail khi được cấu hình đúng.</em>
 </p>
+## 2. Bật EVE JSON Log
 
-3.
+`eve.json` là log sự kiện của Suricata, mỗi sự kiện là một dòng JSON (IP nguồn/đích, signature, mức độ). Script `suricata_mailer.php` đọc file này bằng `json_decode` để gửi email cảnh báo.
+
+### 2.1. Cấu hình EVE Output
+
+1. Vào **Services → Suricata → Interfaces → Edit → EVE Output**.
+2. Đặt **EVE Output Type = FILE**, bấm **Save**.
+
+> Nếu chọn **SYSLOG**, file `eve.json` không được tạo, script không có dữ liệu và không gửi được cảnh báo.
+
+<p align="center">
+  <img width="600" alt="Cấu hình EVE JSON" src="https://github.com/user-attachments/assets/7703ba2e-8b15-464a-9224-ebbdc7debf05" />
+  <br>
+  <em>Hình 4: Cấu hình bật EVE JSON để nhận log.</em>
+</p>
+###2.2. Kiểm tra log qua WebGUI
+1. Vào **Diagnostics → Command Prompt**.
+2. Nhập vào ô **Execute Shell Command** rồi bấm **Execute**:
+
+```sh
+ls /var/log/suricata/
+```
+<p align="center">
+  <img width="600" alt="LS File eve" src="https://github.com/user-attachments/assets/cb499258-bf49-4cfc-9874-419aaed880bd" />
+  <br>
+  <em>Hình 5: Kết quả chạy script, hiển thị tên thư mục UUID của interface WAN.</em>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 4. Sửa dòng `$eve_file` trong [suricata_mailer.php](suricata_mailer.php) theo đúng tên thư mục thật.
 5. Copy file này lên pfSense qua Diagnostics → Edit File, lưu tại `/root/suricata_mailer.php`.
 6. Services → Cron → Add: Minute `*/2`, Command `/usr/local/bin/php -f /root/suricata_mailer.php`.
