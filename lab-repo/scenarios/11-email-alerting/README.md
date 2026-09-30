@@ -87,7 +87,7 @@ ls /var/log/suricata/suricata_em036752/
   <br><br>
   <img width="600" alt="Kết quả ls thư mục interface WAN" src="https://github.com/user-attachments/assets/1eadb704-ff20-4cd3-9e48-1ca6f68dee56" />
   <br>
-  <em>Hình 5: Kết quả chạy lệnh, hiển thị tên thư mục UUID của interface WAN và các file log bên trong.</em>
+  <em>Hình 5 và 6: Kết quả chạy lệnh, hiển thị tên thư mục UUID của interface WAN và các file log bên trong.</em>
 </p>
 
 
@@ -126,7 +126,37 @@ ls /var/log/suricata/suricata_em036752/
 **Luồng chạy:** đọc vị trí cũ → đọc dòng mới trong `eve.json` → lọc warning ID ≤ 2 → gửi mail → lưu vị trí mới.
 
 
-5. Copy file này lên pfSense qua Diagnostics → Edit File, lưu tại `/root/suricata_mailer.php`.
+### 4. Cài đặt package Cron trong pfSense để log tự động.
+
+
+#### 4.1. Cài package Cron
+
+1. Vào **System → Package Manager → Available Packages**.
+2. Tìm `Cron`, bấm **Install**, rồi **Confirm**.
+
+**Kiểm tra:** mục **Services → Cron** xuất hiện trong menu.
+
+#### 4.2. Tạo lịch chạy script
+1. Diagnostics → Edit File, lưu tại `/root/suricata_mailer.php`.
+2. Điền như bảng dưới rồi bấm **Save**.
+
+
+
+| Ô | Giá trị | Ý nghĩa |
+|---|---------|---------|
+| Minute | `*/2` | Chạy mỗi 2 phút |
+| Hour, Day, Month, Weekday | `*` | Mọi giờ, ngày, tháng, thứ |
+| User | `root` | Chạy bằng quyền root, đủ quyền đọc log |
+| Command | `/usr/local/bin/php -f /root/suricata_mailer.php` | Chạy script bằng PHP CLI |
+
+
+<p align="center">
+  <img width="600" alt="Cấu hình EVE JSON" src="[https://github.com/user-attachments/assets/7703ba2e-8b15-464a-9224-ebbdc7debf05](https://github.com/user-attachments/assets/574d5bb5-55da-48c0-a501-921855b062c1)" />
+  <br>
+  <em>Hình 7: Cấu hình Cron nhận log tự động qua mail.</em>
+</p>
+
+
 6. Services → Cron → Add: Minute `*/2`, Command `/usr/local/bin/php -f /root/suricata_mailer.php`.
 
 ## Lệnh / công cụ đã kiểm thử
