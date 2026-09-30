@@ -139,7 +139,8 @@ ls /var/log/suricata/suricata_em036752/
 
 #### 4.2. Tạo lịch chạy script
 1. Diagnostics → Edit File, lưu tại `/root/suricata_mailer.php`.
-2. Điền như bảng dưới rồi bấm **Save**.
+2. Vào **Services → Cron → Add**.
+3. Điền như bảng dưới rồi bấm **Save**.
 
 
 
