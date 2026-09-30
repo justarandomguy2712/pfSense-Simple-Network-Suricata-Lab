@@ -34,7 +34,7 @@
 
 
 
-## 7. Kết quả mong đợi
+## 6. Kết quả mong đợi
 
 
 
