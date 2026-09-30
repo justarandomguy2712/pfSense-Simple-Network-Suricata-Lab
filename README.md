@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td valign="bottom"><img src="img/pfSense-logo.png" alt="pfSense logo" width="220"></td>
-    <td><h1>pfSense-Simple-Network-Suricata-Lab</h1></td>
+    <td><h1>pfSense-Simple-Network-Lab</h1></td>
   </tr>
 </table>
 
