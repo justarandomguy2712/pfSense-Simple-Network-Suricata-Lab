@@ -1,4 +1,4 @@
-<img width="1227" height="813" alt="Screenshot 2026-09-30 164342" src="https://github.com/user-attachments/assets/0ffb04b3-19e2-4100-b77d-5c8163876c0b" /># 12 — Email cảnh báo tự động
+
 
 ## Mục tiêu
 Tự động gửi email khi Suricata phát hiện alert mức độ nghiêm trọng, không cần trực theo dõi log thủ công.
