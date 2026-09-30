@@ -1,5 +1,8 @@
 # 11 — Email Alerting
 
+🌐 **Language:** **English** | [Vietnamese](README.viever.md)
+
+
 ## I. Objective
 
 Automatically send an email when Suricata detects a high-severity alert, so there is no need to watch logs manually.
