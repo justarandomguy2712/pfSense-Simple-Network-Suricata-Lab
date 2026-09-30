@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <td><img src="images/pfsense-logo.png" alt="pfSense logo" width="220"></td>
+    <td><img src="img/pfsense-logo.png" alt="pfSense logo" width="220"></td>
     <td><h1>pfSense-Simple-Network-Suricata-Lab</h1></td>
   </tr>
 </table>
