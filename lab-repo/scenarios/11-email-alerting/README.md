@@ -123,9 +123,7 @@ ls /var/log/suricata/suricata_em036752/
 | `fclose($fp)` | Đóng file |
 
 
-
-**Luồng chạy:** đọc vị trí cũ → đọc dòng mới trong `eve.json` → lọc alert severity ≤ 2 → gửi mail → lưu vị trí mới.
-
+**Luồng chạy:** đọc vị trí cũ → đọc dòng mới trong `eve.json` → lọc warning ID ≤ 2 → gửi mail → lưu vị trí mới.
 
 
 5. Copy file này lên pfSense qua Diagnostics → Edit File, lưu tại `/root/suricata_mailer.php`.
