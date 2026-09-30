@@ -170,7 +170,7 @@ ls /var/log/suricata/suricata_em036752/
 ### 5. Kiểm tra kết quả
 
 #### 5.1. Vào **Diagnostics → Command Prompt**, chạy `/usr/local/bin/php -f /root/suricata_mailer.php`.
-#### 5.2 Tạo một alert severity 1 hoặc 2 (ví dụ quét lỗ hổng web bằng `curl`), chờ tối đa 2 phút.
+#### 5.2 Tạo một alert severity 1 hoặc 2 (ví dụ quét lỗ hổng web bằng `nikto`), chờ tối đa 2 phút.
 
 **Kiểm tra:** Gmail nhận được email `[SURICATA ALERT]`như ảnh sau:
 
