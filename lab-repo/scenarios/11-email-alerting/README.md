@@ -26,6 +26,13 @@ App Password là mật khẩu 16 ký tự Google cấp riêng cho pfSense, dùng
 
 ### 1. Cấu hình SMTP Email trên pfSense để gửi email cảnh báo
 
+
+
+#### 1.1. Vào **System → Advanced → Notifications → SMTP E-Mail**, cấu hình như hình.
+
+
+
+
 <p align="center">
   <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/92338248-e116-4acb-9647-19c0bd111c39" />
   <br>
@@ -117,14 +124,14 @@ ls /var/log/suricata/suricata_em036752/
 | `while (fgets(...))` | Đọc từng dòng, mỗi dòng là một sự kiện JSON |
 | `json_decode($line, true)` | Chuyển dòng JSON thành mảng PHP |
 | `event_type == 'alert'` | Chỉ xử lý sự kiện cảnh báo, bỏ qua dns, http, tls... |
-| `$sev <= 2` | Chỉ gửi mail alert mức nghiêm trọng (Warning ID 1 và 2, số càng nhỏ càng nghiêm trọng). Điền thiếu trường này thì mặc định warning ID là 3, không gửi |
+| `$sev <= 2` | Chỉ gửi mail alert mức nghiêm trọng (Severity ID 1 và 2, số càng nhỏ càng nghiêm trọng). Điền thiếu trường này thì mặc định severity ID là 3, không gửi |
 | `$msg = ...` | Soạn nội dung mail alert: signature, IP nguồn → IP đích: cổng, thời gian |
 | `notify_via_smtp($msg)` | Gửi mail qua cấu hình SMTP ở System → Advanced → Notifications |
 | `ftell` + `file_put_contents` | Lưu vị trí cuối file vừa đọc cho lần chạy kế tiếp |
 | `fclose($fp)` | Đóng file |
 
 
-**Luồng chạy:** đọc vị trí cũ → đọc dòng mới trong `eve.json` → lọc warning ID ≤ 2 → gửi mail → lưu vị trí mới.
+**Luồng chạy:** đọc vị trí cũ → đọc dòng mới trong `eve.json` → lọc Severity ID ≤ 2 → gửi mail → lưu vị trí mới.
 
 
 ### 4. Cài đặt package Cron trong pfSense để log tự động.
