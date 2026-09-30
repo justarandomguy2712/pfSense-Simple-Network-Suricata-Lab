@@ -75,13 +75,19 @@ Each scenario directory follows a standard template (refer to _Template-Report/R
 
 ## Tech Stack sử dụng / Technology Stack
 
-- Platform: GNS3
+- Network Emulation: GNS3.
 
-- Firewall & Routing: pfSense, Cisco IOS, Node Ethernet Switching GNS3
+- Firewall & Routing: pfSense, Cisco IOS.
+
+  
+- Switching: GNS3 Ethernet Switch
+
 
 - Security (IDS/IPS): Suricata, pfBlockerNG-devel
 
-- Virtualization & Emulation: GNS3, VMware WorkstatioN
+
+- Virtualization: VMware Workstation
+
 
 - Operating Systems: Kali Linux, Windows Server 2012
 ## Tác giả
