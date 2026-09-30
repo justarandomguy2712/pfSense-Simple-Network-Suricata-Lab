@@ -3,12 +3,25 @@
 ## Mục tiêu
 Tự động gửi email khi Suricata phát hiện alert mức độ nghiêm trọng, không cần trực theo dõi log thủ công.
 
-## Điều kiện tiên quyết
-- System → Advanced → Notifications → SMTP đã cấu hình và Test thành công
-  - Gmail: SMTP server `smtp.gmail.com`, **port 465** (không dùng 587 — pfSense dùng implicit SSL, chỉ tương thích 465), Enable SMTP over SSL/TLS = ON, dùng **App Password** (không dùng mật khẩu Gmail thường)
+## Điều kiện để thực hiện bài lab
+- System → Advanced → Notifications → SMTP đã cấu hình và test thành công
+  - Gmail: SMTP server `smtp.gmail.com`, **port 465**, Enable SMTP over SSL/TLS = ON, dùng **App Password** (không dùng mật khẩu Gmail thường)
   - Nếu gặp lỗi "No route to host" dù port đã đúng: kiểm tra xung đột IPv6 — tắt "Allow IPv6" tại System → Advanced → Networking
 - Suricata EVE Output Type = **FILE** (không phải SYSLOG) — bắt buộc để có file `eve.json` cho script đọc
 - Cron package đã cài
+### Tạo Gmail App Password
+
+App Password là mật khẩu 16 ký tự Google cấp riêng cho pfSense, dùng thay mật khẩu Gmail thường. Yêu cầu: đã bật **Xác minh 2 bước**.
+
+| Bước | Thao tác | Kiểm tra |
+|------|----------|----------|
+| 1 | Mở https://myaccount.google.com/apppasswords | Thấy ô nhập tên ứng dụng |
+| 2 | Nhập tên `pfSense-Suricata`, bấm **Tạo** | Hiện mật khẩu 16 ký tự |
+| 3 | Sao chép, xóa hết khoảng trắng (chỉ hiện một lần) | Chuỗi dài đúng 16 ký tự |
+| 4 | pfSense: **System → Advanced → Notifications → SMTP**, dán vào ô password, **Save** rồi **Test SMTP Settings** | Nhận được email thử |
+
+
+
 
 ## Cài đặt
 
