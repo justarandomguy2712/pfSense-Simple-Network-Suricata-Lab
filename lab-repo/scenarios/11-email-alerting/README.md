@@ -182,37 +182,56 @@ ls /var/log/suricata/suricata_em036752/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## IV. Lệnh / công cụ đã kiểm thử
+### 1. Kiểm thử tấn công bằng Kali Linux. 
+Lệnh mô phỏng tấn công: `nmap` kiểm tra directory traversal:
+
 
 ```bash
-# Từ Kali — tạo 1 alert nghiêm trọng
-nmap -p 80 --script http-sql-injection 192.168.10.1
+# nmap -p 80 --script http-passwd 192.168.10.1
 ```
 
-Đợi tối đa 2 phút (chu kỳ cron) — **không** chạy tay lệnh php, để xác nhận cron tự hoạt động.
+Lệnh chạy từ máy Kali (`192.168.10.50`) tới web server `192.168.10.1` để thử tấn công **directory traversal** và kích hoạt cảnh báo của Suricata.
+
+| Thành phần | Ý nghĩa |
+|------------|---------|
+| `nmap` | Công cụ quét mạng |
+| `-p 80` | Chỉ quét cổng 80 (HTTP) |
+| `--script http-passwd` | Chạy script Nmap Scripting Engine thử đọc file nhạy cảm (`/etc/passwd`, `boot.ini`) bằng các đường dẫn dạng `../../`. Nếu đọc được, server bị lỗi directory traversal |
+| `192.168.10.1` | Địa chỉ máy đích |
+
+
+<p align="center">
+  <img width="600" alt="Cấu hình Kali Linux" src="https://github.com/user-attachments/assets/12b66699-bb9f-4793-90ec-ad592158151b"  />
+  <br>
+  <em>Hình 9: Tấn công kiểm thử trên Kali Linux</em>
+</p>
+
+
+
+
+
 
 
 
 ## V. Kết quả thu được
 
-| File | Nội dung |
-|---|---|
-| `screenshots/12-smtp-test-success.png` | Test SMTP Settings thành công |
-| `screenshots/12-cron-job-config.png` | Cấu hình Cron job |
-| `screenshots/12-email-received.png` | Email cảnh báo nhận được trong hộp thư |
+| Ảnh | Nội dung |
+|-----|----------|
+|<img width="1184" height="203" alt="Screenshot 2026-09-30 165646" src="https://github.com/user-attachments/assets/e426b33c-cfde-4f08-86b0-b1bcc4390045" />| Logs ở tab alerts trên Suricata |
+|<img width="1418" height="287" alt="Screenshot 2026-09-30 205535" src="https://github.com/user-attachments/assets/0d598e93-e64d-49ac-a0da-801289720583" /> | Email `[SURICATA ALERT]` nhận được trong Gmail |
+
+
+
+**Kiểm chứng bộ lọc severity:** tab Alerts có 2 alert (Pri 3 và Pri 1), email chỉ chứa alert Pri 1. Điều này xác nhận script chỉ gửi alert có severity ≤ 2.
+
 
 ## VI. Kết quả mong đợi
+
 - Email tự động về trong vòng 02 phút sau khi có alert nghiêm trọng, không cần thao tác thủ công.
+- Chỉ alert **severity 1 và 2** được gửi mail. Alert severity 3 (ví dụ `SURICATA Applayer Mismatch protocol`) chỉ hiện ở tab Alerts, không gây ra tình trạng spam email.
+- Mỗi alert chỉ gửi **một lần**. Script lưu vị trí đã đọc trong `/tmp/suricata_mail_lastpos.txt` nên không gửi lại alert cũ.
+- Nhiều alert xảy ra trong cùng một chu kỳ Cron được gộp vào **một email** (như Hình 8, gồm 3 alert).
+- Nội dung email đủ để đưa ra biện pháp xử lý: tên signature, IP Source → IP Des: cổng, thời gian.
+- Hệ thống chạy ổn định sau khi khởi động lại pfSense vì Cron tự chạy lại theo lịch đã config.
+
