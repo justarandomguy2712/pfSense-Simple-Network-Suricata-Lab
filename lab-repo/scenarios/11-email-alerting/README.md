@@ -1,6 +1,11 @@
 # 11 — Email Alerting
 
 
+
+🌐 **Ngôn ngữ:** **Tiếng Việt** | [English](README.en.md)
+
+
+
 ## I. Mục tiêu
 Tự động gửi email khi Suricata phát hiện alert mức độ nghiêm trọng, không cần trực theo dõi log thủ công.
 
