@@ -2,7 +2,7 @@
 
 <img src="images/pfsense-logo.png" alt="pfSense logo" width="180">
 
-<h1>pfSense Suricata Lab</h1>
+<h1>pfSense-Simple-Network-Suricata-Lab</h1>
 
 Vietnamese Version: Đây là dự án cá nhân xây dựng một lab cơ bản mô phỏng cách hoạt động của IPS/IDS trong hệ thống doanh nghiệp vừa và nhỏ được xây dựng hoàn toàn trên hệ thống ảo hóa (VMWare + GNS3).
 
