@@ -90,18 +90,12 @@ ls /var/log/suricata/suricata_em036752/
 
 | Lệnh | Mục đích | Kết quả đúng |
 |------|---------|--------------|
-| `ls /var/log/suricata/` | Liệt kê thư mục log, mỗi interface một thư mục con | Thấy thư mục dạng `suricata_<interface><UUID>` |
-| `ls /var/log/suricata/suricata_em036752/` | Liệt kê file log của interface đó | Có file `eve.json` |
+| `ls /var/log/suricata/` | Liệt kê thư mục log, mỗi interface một thư mục con | <img width="600" alt="ls thư mục log Suricata" src="https://github.com/user-attachments/assets/cb499258-bf49-4cfc-9874-419aaed880bd" /> |
+| `ls /var/log/suricata/suricata_em036752/` | Liệt kê file log của interface đó |   <img width="600" alt="Kết quả ls thư mục interface WAN" src="https://github.com/user-attachments/assets/1eadb704-ff20-4cd3-9e48-1ca6f68dee56" /> |
 
 
 
-<p align="center">
-  <img width="600" alt="ls thư mục log Suricata" src="https://github.com/user-attachments/assets/cb499258-bf49-4cfc-9874-419aaed880bd" />
-  <br><br>
-  <img width="600" alt="Kết quả ls thư mục interface WAN" src="https://github.com/user-attachments/assets/1eadb704-ff20-4cd3-9e48-1ca6f68dee56" />
-  <br>
-  <em>Hình 5 và 6: Kết quả chạy lệnh, hiển thị tên thư mục UUID của interface WAN và các file log bên trong.</em>
-</p>
+
 
 
 
@@ -167,7 +161,7 @@ ls /var/log/suricata/suricata_em036752/
 <p align="center">
   <img width="600" alt="Cấu hình Cron" src="https://github.com/user-attachments/assets/26bca455-29a0-41b3-b9af-5815b6807faf" />
   <br>
-  <em>Hình 7: Cấu hình Cron nhận log tự động qua mail.</em>
+  <em>Hình 5: Cấu hình Cron nhận log tự động qua mail.</em>
 </p>
 
 
@@ -182,7 +176,7 @@ ls /var/log/suricata/suricata_em036752/
 <p align="center">
   <img width="600" alt="Cấu hình Email Alearting" src="https://github.com/user-attachments/assets/3a579461-a89b-44e1-ae8d-179283ac4405" />
   <br>
-  <em>Hình 8: Email Alerting đã được gửi về mail theo đúng cấu hình</em>
+  <em>Hình 6: Email Alerting đã được gửi về mail theo đúng cấu hình</em>
 </p>
 
 
@@ -209,7 +203,7 @@ Lệnh chạy từ máy Kali (`192.168.10.50`) tới web server `192.168.10.1` �
 <p align="center">
   <img width="600" alt="Cấu hình Kali Linux" src="https://github.com/user-attachments/assets/12b66699-bb9f-4793-90ec-ad592158151b"  />
   <br>
-  <em>Hình 9: Tấn công kiểm thử trên Kali Linux</em>
+  <em>Hình 7: Tấn công kiểm thử trên Kali Linux</em>
 </p>
 
 
