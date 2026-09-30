@@ -54,7 +54,10 @@ App Password là mật khẩu 16 ký tự Google cấp riêng cho pfSense, dùng
   <br>
   <em>Hình 4: Cấu hình bật EVE JSON để nhận log.</em>
 </p>
-###2.2. Kiểm tra log qua WebGUI
+
+
+
+### 2.2. Kiểm tra log qua WebGUI
 1. Vào **Diagnostics → Command Prompt**.
 2. Nhập vào ô **Execute Shell Command** rồi bấm **Execute**:
 
@@ -64,7 +67,7 @@ ls /var/log/suricata/
 <p align="center">
   <img width="600" alt="LS File eve" src="https://github.com/user-attachments/assets/cb499258-bf49-4cfc-9874-419aaed880bd" />
   <br>
-  <em>Hình 5: Kết quả chạy script, hiển thị tên thư mục UUID của interface WAN.</em>
+  <em>Hình 5: Kết quả chạy command, hiển thị tên thư mục UUID của interface WAN.</em>
 </p>
 
 
