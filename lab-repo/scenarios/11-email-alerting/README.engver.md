@@ -124,7 +124,7 @@ ls /var/log/suricata/suricata_em036752/
 | `fclose($fp)` | Close the file |
 
 
-**Flow:** read the old position → read new lines in `eve.json` → filter Severity ID ≤ 2 → send mail → save the new position.
+**Flow:** Read the old position → Read new lines in `eve.json` → Filter Severity ID ≤ 2 → Send mail → Save the new position.
 
 
 ### 4. Install the Cron package in pfSense to run automatically.
