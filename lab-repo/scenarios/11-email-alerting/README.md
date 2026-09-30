@@ -167,7 +167,33 @@ ls /var/log/suricata/suricata_em036752/
 
 
 
-6. Services → Cron → Add: Minute `*/2`, Command `/usr/local/bin/php -f /root/suricata_mailer.php`.
+### 5. Kiểm tra kết quả
+
+#### 5.1. Vào **Diagnostics → Command Prompt**, chạy `/usr/local/bin/php -f /root/suricata_mailer.php`.
+#### 5.2 Tạo một alert severity 1 hoặc 2 (ví dụ quét lỗ hổng web bằng `curl`), chờ tối đa 2 phút.
+
+**Kiểm tra:** Gmail nhận được email `[SURICATA ALERT]`như ảnh sau:
+
+<p align="center">
+  <img width="600" alt="Cấu hình Email Alearting" src="https://github.com/user-attachments/assets/3a579461-a89b-44e1-ae8d-179283ac4405" />
+  <br>
+  <em>Hình 8: Email Alerting đã được gửi về mail theo đúng cấu hình</em>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Lệnh / công cụ đã kiểm thử
 
@@ -177,6 +203,8 @@ nmap -p 80 --script http-sql-injection 192.168.10.1
 ```
 
 Đợi tối đa 2 phút (chu kỳ cron) — **không** chạy tay lệnh php, để xác nhận cron tự hoạt động.
+
+
 
 ## Kết quả thu được
 
