@@ -50,19 +50,26 @@ Mỗi thư mục kịch bản/mô hình đều theo cùng 1 khuôn mẫu (xem _T
 Each scenario directory follows a standard template (refer to _Template-Report/README.md).
 
 
-1. Mục tiêu | Objective: Kịch bản này chứng minh điều gì? / What does this scenario demonstrate?
+1. Mục tiêu | Objective: Kịch bản này chứng minh điều gì? / **What does this scenario demonstrate?**
 
-2. Sơ đồ mạng | Topology: Vị trí và sơ đồ thiết kế trong mạng. / Diagram and position within the network topology.
+2. Điều kiện xây dựng kịch bản | Scenario Development Basis: Mô phỏng các tình huống thực tế để kiểm tra và đánh giá khả năng hoạt động của hệ thống. / **Simulate real-world scenarios to test and evaluate system performance.**
 
-3. Cấu hình | Configuration: Các bước thiết lập chi tiết đã thực hiện. / Detailed configuration steps performed.
 
-4. Kiểm thử | Testing: Các lệnh và công cụ được sử dụng. / Commands and tools used for testing.
 
-5. Kết quả | Results: Kết quả thu được (kèm hình ảnh minh họa). / Obtained results (with images).
+3. Cấu hình | Configuration: Các bước thiết lập chi tiết đã thực hiện. / **Detailed configuration steps performed.**
 
-6. Khắc phục sự cố | Troubleshooting: Các vấn đề gặp phải và hướng giải quyết. / Issues encountered and their solutions.
 
-7. Kết luận | Conclusion: Đánh giá và tổng kết. / Final evaluation and summary.
+
+
+4. Kiểm thử | Testing: Các lệnh và công cụ được sử dụng. / **Commands and tools used for testing.**
+
+
+
+5. Kết quả | Results: Kết quả thu được (kèm hình ảnh minh họa). / **Obtained results (With supporting images).**
+
+
+
+6. Kết quả mong đợi | Expected Results and Outcomes: Thu đủ dữ liệu đã yêu cầu và đưa ra đánh giá và kết luận. / **Collect the required data, followed by evaluation and conclusions.**
 
 
 
