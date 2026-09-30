@@ -78,8 +78,8 @@ Each scenario directory follows a standard template
 
 
 - Operating Systems: Kali Linux, Windows Server 2012
-## Tác giả
-Manh Ha Nguyen
+## Tác giả / Author
+Mạnh Hà Nguyễn
 
 
 🎓 Sinh viên chuyên ngành An toàn thông tin - Học viện Kỹ thuật Mật mã (KMA).
