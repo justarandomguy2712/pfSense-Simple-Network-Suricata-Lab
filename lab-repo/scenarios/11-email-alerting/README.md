@@ -25,17 +25,19 @@ App Password là mật khẩu 16 ký tự Google cấp riêng cho pfSense, dùng
 
 1. Cấu hình SMTP Email trên pfSense để gửi email cảnh báo
 
+<p align="center">
+  <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/92338248-e116-4acb-9647-19c0bd111c39" />
+  <br>
+  <em>Hình 1: Cấu hình SMTP Gmail trên pfSense để gửi email cảnh báo.</em>
+</p>
 
-<img width="1000" height="800" alt="Screenshot 2026-09-30 161551" src="https://github.com/user-attachments/assets/92338248-e116-4acb-9647-19c0bd111c39" />
-
-####Sau khi cấu hình thì test mail sẽ được gửi về mail đã cấu hình như sau:
-
-<img width="1284" height="754" alt="1790762369902_210041496604442149_8492484561089443860_bcec4789972da93293563bed4f199455" src="https://github.com/user-attachments/assets/b8201bab-af12-41f7-926f-dfdfa23adcce" />
-
-<img width="1193" height="167" alt="Screenshot 2026-09-30 163650" src="https://github.com/user-attachments/assets/5f4c9e08-e221-4115-989e-6aca06632c0e" />
-
-
-
+<p align="center">
+  <img width="600" alt="Email cảnh báo Suricata" src="https://github.com/user-attachments/assets/b8201bab-af12-41f7-926f-dfdfa23adcce" />
+  <br><br>
+  <img width="700" alt="Email cảnh báo Suricata (chi tiết)" src="https://github.com/user-attachments/assets/5f4c9e08-e221-4115-989e-6aca06632c0e" />
+  <br>
+  <em>Hình 2 và 3: Email Test <code>suricata_mailer.php</code> được gửi về Gmail khi được cấu hình đúng.</em>
+</p>
 
 3.
 4. Sửa dòng `$eve_file` trong [suricata_mailer.php](suricata_mailer.php) theo đúng tên thư mục thật.
