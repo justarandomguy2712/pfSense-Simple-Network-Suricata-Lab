@@ -1,6 +1,6 @@
 ## Các commands pfSense trong quá trình làm lab
 
-Chạy trong **Diagnostics->Command Prompt** của pfSense (trên WebGUI)
+Chạy trong **Diagnostics -> Command Prompt** của pfSense (trên WebGUI)
 
 ### Nhóm 1: Suricata (IDS/IPS)
 
@@ -14,7 +14,7 @@ Chạy trong **Diagnostics->Command Prompt** của pfSense (trên WebGUI)
 
 | # | Lệnh | Ý nghĩa | Kiểm tra kết quả |
 |---|------|---------|------------------|
-| 4 | `grep -i "doubleclick" /var/db/pfblockerng/dnsbl/*.txt` | Tìm không phân biệt hoa/thường (`-i`) chuỗi `doubleclick` trong các danh sách chặn DNSBL. Dùng để biết tên miền quảng cáo đã nằm trong blocklist chưa. | Có dòng kết quả = tên miền đã bị chặn. Không có kết quả = chưa nằm trong list. |
+| 4 | `grep -i "doubleclick" /var/db/pfblockerng/dnsbl/*.txt` | Tìm không phân biệt hoa/thường (`-i`) chuỗi `doubleclick` trong các danh sách chặn DNSBL. Dùng để biết tên miền quảng cáo đã nằm trong blocklist chưa. | Có dòng kết quả là tên miền đã bị chặn. Không có kết quả là người quản trị chưa cấu hình trong list. |
 
 ### Nhóm 3: Sửa lỗi cập nhật gói / nâng cấp pfSense
 
@@ -26,5 +26,9 @@ Thực hiện theo đúng thứ tự.
 | 2 | `pkg update -f` | Ép (`-f`) tải lại danh mục repository. | Báo `... repository is up to date` hoặc cập nhật thành công. |
 | 3 | `ps aux \| grep -i pfSense-upgrade` | Kiểm tra tiến trình nâng cấp có đang chạy không. | Chỉ còn dòng của chính lệnh `grep` là không có upgrade đang chạy. |
 | 4 | `rm -f /var/run/pfSense-upgrade.pid` | Xóa file PID cũ còn sót của lần upgrade bị treo. | `ls /var/run/pfSense-upgrade.pid` báo `No such file`. |
+| 5 | `rm -f /tmp/pfSense-upgrade.lock` | Xóa file khóa của tiến trình cũ còn sót, thứ chặn upgrade mới (`-f` = không báo lỗi nếu file không tồn tại). | `ls /tmp/pfSense-upgrade.lock` báo `No such file`. |
 
-> ⚠️ **Cảnh báo:** Chỉ chạy bước 4 và 5 khi bước 3 xác nhận **không có** tiến trình upgrade đang chạy. Xóa lock/PID khi upgrade đang chạy có thể làm hỏng hệ thống.
+
+
+
+ **Cảnh báo:** Chỉ chạy bước 4 và 5 khi bước 3 xác nhận **không có** tiến trình upgrade đang chạy. Xóa lock/PID khi upgrade đang chạy có thể làm hỏng hệ thống.
