@@ -1,10 +1,10 @@
 # 11 — Email Alerting
 
 
-## Mục tiêu
+## I. Mục tiêu
 Tự động gửi email khi Suricata phát hiện alert mức độ nghiêm trọng, không cần trực theo dõi log thủ công.
 
-## Điều kiện để thực hiện bài lab
+## II. Điều kiện để thực hiện bài lab
 - System → Advanced → Notifications → SMTP đã cấu hình và test thành công
   - Gmail: SMTP server `smtp.gmail.com`, **port 465**, Enable SMTP over SSL/TLS = ON, dùng **App Password** (không dùng mật khẩu Gmail thường)
   - Nếu gặp lỗi "No route to host" dù port đã đúng: kiểm tra xung đột IPv6 — tắt "Allow IPv6" tại System → Advanced → Networking
@@ -22,7 +22,7 @@ App Password là mật khẩu 16 ký tự Google cấp riêng cho pfSense, dùng
 | 4 | pfSense: **System → Advanced → Notifications → SMTP**, dán vào ô password, **Save** rồi **Test SMTP Settings** | Nhận được email thử |
 
 
-## Các bước cấu hình đã thực hiện
+## III. Các bước cấu hình đã thực hiện
 
 ### 1. Cấu hình SMTP Email trên pfSense để gửi email cảnh báo
 
@@ -195,7 +195,7 @@ ls /var/log/suricata/suricata_em036752/
 
 
 
-## Lệnh / công cụ đã kiểm thử
+## IV. Lệnh / công cụ đã kiểm thử
 
 ```bash
 # Từ Kali — tạo 1 alert nghiêm trọng
@@ -206,7 +206,7 @@ nmap -p 80 --script http-sql-injection 192.168.10.1
 
 
 
-## Kết quả thu được
+## V. Kết quả thu được
 
 | File | Nội dung |
 |---|---|
@@ -214,5 +214,5 @@ nmap -p 80 --script http-sql-injection 192.168.10.1
 | `screenshots/12-cron-job-config.png` | Cấu hình Cron job |
 | `screenshots/12-email-received.png` | Email cảnh báo nhận được trong hộp thư |
 
-## Kết quả mong đợi
+## VI. Kết quả mong đợi
 - Email tự động về trong vòng 02 phút sau khi có alert nghiêm trọng, không cần thao tác thủ công.
