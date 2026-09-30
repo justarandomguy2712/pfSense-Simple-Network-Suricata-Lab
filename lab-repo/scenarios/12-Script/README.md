@@ -1,4 +1,4 @@
-## Các lệnh quản trị pfSense trong quá trình làm lab
+## Các commands pfSense trong quá trình làm lab
 
 Chạy trong **Diagnostics->Command Prompt** của pfSense (trên WebGUI)
 
