@@ -25,12 +25,12 @@
 
 <!-- Mô tả log/kết quả, chèn ảnh minh chứng bằng cú pháp bên dưới -->
 
-|---|---|
+| Hình ảnh | Mô tả |
+| :--- | :--- |
 | `screenshots/13-Template-Report.png` | Kết quả sau khi cấu hình |
 | `screenshots/13-Template-Report.png` | Kết quả sau khi cấu hình |
 | `screenshots/13-Template-Report.png` | Kết quả sau khi cấu hình |
 | `screenshots/13-Template-Report.png` | Kết quả sau khi cấu hình |
-
 
 
 
