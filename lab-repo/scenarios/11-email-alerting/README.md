@@ -1,4 +1,4 @@
-# 12 — Email cảnh báo tự động
+<img width="1227" height="813" alt="Screenshot 2026-09-30 164342" src="https://github.com/user-attachments/assets/0ffb04b3-19e2-4100-b77d-5c8163876c0b" /># 12 — Email cảnh báo tự động
 
 ## Mục tiêu
 Tự động gửi email khi Suricata phát hiện alert mức độ nghiêm trọng, không cần trực theo dõi log thủ công.
@@ -151,10 +151,11 @@ ls /var/log/suricata/suricata_em036752/
 
 
 <p align="center">
-  <img width="600" alt="Cấu hình EVE JSON" src="[https://github.com/user-attachments/assets/7703ba2e-8b15-464a-9224-ebbdc7debf05](https://github.com/user-attachments/assets/574d5bb5-55da-48c0-a501-921855b062c1)" />
+  <img width="600" alt="Cấu hình Cron" src="https://github.com/user-attachments/assets/26bca455-29a0-41b3-b9af-5815b6807faf" />
   <br>
   <em>Hình 7: Cấu hình Cron nhận log tự động qua mail.</em>
 </p>
+
 
 
 6. Services → Cron → Add: Minute `*/2`, Command `/usr/local/bin/php -f /root/suricata_mailer.php`.
