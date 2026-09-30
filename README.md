@@ -62,7 +62,7 @@ Each scenario directory follows a standard template
 
 
 
-## Tech Stack sử dụng / Technology Stack
+## Tech Stack đã sử dụng / Technology Stack
 
 - Network Emulation: GNS3.
 
