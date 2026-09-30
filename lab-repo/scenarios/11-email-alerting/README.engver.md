@@ -89,19 +89,8 @@ ls /var/log/suricata/suricata_em036752/
 
 | Command | Purpose | Expected result |
 |------|---------|--------------|
-| `ls /var/log/suricata/` | List the log directories, one subdirectory per interface | A folder named `suricata_<interface><UUID>` appears |
-| `ls /var/log/suricata/suricata_em036752/` | List the log files of that interface | The `eve.json` file is present |
-
-
-
-<p align="center">
-  <img width="600" alt="ls Suricata log directory" src="https://github.com/user-attachments/assets/cb499258-bf49-4cfc-9874-419aaed880bd" />
-  <br><br>
-  <img width="600" alt="ls result of the WAN interface directory" src="https://github.com/user-attachments/assets/1eadb704-ff20-4cd3-9e48-1ca6f68dee56" />
-  <br>
-  <em>Figures 5 and 6: Command results, showing the UUID folder name of the WAN interface and the log files inside it.</em>
-</p>
-
+| `ls /var/log/suricata/` | List the log directories, one subdirectory per interface | <img width="600" alt="ls Suricata log directory" src="https://github.com/user-attachments/assets/cb499258-bf49-4cfc-9874-419aaed880bd" />|
+| `ls /var/log/suricata/suricata_em036752/` | List the log files of that interface |  <img width="600" alt="ls result of the WAN interface directory" src="https://github.com/user-attachments/assets/1eadb704-ff20-4cd3-9e48-1ca6f68dee56" />|
 
 
 
@@ -166,7 +155,7 @@ ls /var/log/suricata/suricata_em036752/
 <p align="center">
   <img width="600" alt="Cron configuration" src="https://github.com/user-attachments/assets/26bca455-29a0-41b3-b9af-5815b6807faf" />
   <br>
-  <em>Figure 7: Cron configuration to receive logs automatically by mail.</em>
+  <em>Figure 5: Cron configuration to receive logs automatically by mail.</em>
 </p>
 
 
@@ -181,7 +170,7 @@ ls /var/log/suricata/suricata_em036752/
 <p align="center">
   <img width="600" alt="Email Alerting configuration" src="https://github.com/user-attachments/assets/3a579461-a89b-44e1-ae8d-179283ac4405" />
   <br>
-  <em>Figure 8: The alert email was delivered to the mailbox as configured</em>
+  <em>Figure 6: The alert email was delivered to the mailbox as configured</em>
 </p>
 
 
@@ -208,7 +197,7 @@ The command is run from the Kali machine (`192.168.10.50`) against the web serve
 <p align="center">
   <img width="600" alt="Kali Linux configuration" src="https://github.com/user-attachments/assets/12b66699-bb9f-4793-90ec-ad592158151b"  />
   <br>
-  <em>Figure 9: Test attack on Kali Linux</em>
+  <em>Figure 7: Test attack on Kali Linux</em>
 </p>
 
 
