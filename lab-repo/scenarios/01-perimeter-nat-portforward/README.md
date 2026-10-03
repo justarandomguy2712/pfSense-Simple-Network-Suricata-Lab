@@ -126,7 +126,10 @@ icmp && frame.len == 142
 </p>
 
 
-####Giải thích bảng States (Diagnostics → States)
+
+
+
+#### Giải thích bảng States (Diagnostics → States)
 
 **Bộ lọc:** Interface `all`, Filter expression `192.168.20.2` (chỉ lấy state của WinServer). Không bấm **Kill States** vì nút này ngắt kết nối đang chạy.
 
