@@ -97,6 +97,12 @@ nmap -Pn -p 3306 192.168.10.1
 
 
 
+
+
+<img width="1141" height="167" alt="Screenshot 2026-10-01 102015" src="https://github.com/user-attachments/assets/a7efdd7c-a442-49ee-99f3-6e3d71d101ac" />
+
+
+
 ## V. Kết quả thu được
 
 
@@ -104,6 +110,7 @@ nmap -Pn -p 3306 192.168.10.1
 |---|---|
 | <img width="1136" height="205" alt="Screenshot 2026-10-01 101727" src="https://github.com/user-attachments/assets/213541a2-c1d9-409c-9947-33d2d054cf0c" /> | Cấu hình Firewall trên pfSense cho phép lưu lượng từ địa chỉ IP của Kali Linux truy cập vào các cổng mạng đã được cấp phép. |
 | <img width="1136" height="66" alt="Screenshot 2026-10-01 101818" src="https://github.com/user-attachments/assets/1c086e8f-3e36-4375-9bdf-18d6c3e676f7" /> | pfSense Firewall log đã block cho port không nằm trong Ports_Test |
+| <img width="1141" height="167" alt="Screenshot 2026-10-01 102015" src="https://github.com/user-attachments/assets/a7efdd7c-a442-49ee-99f3-6e3d71d101ac" /> | Suricata phát hiện lưu lượng mạng bất thường qua cổng 3306 không thuộc các Alias được phép. |
 
 
 
