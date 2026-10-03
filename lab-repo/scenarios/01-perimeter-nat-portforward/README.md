@@ -58,7 +58,7 @@ Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forwa
 <p align="center">
  <img width="1263" height="554" alt="Screenshot 2026-10-03 224328" src="https://github.com/user-attachments/assets/7414586d-6e5f-4f57-b782-7f2773050d2c" />
   <br>
-  <em>Hình 4: Tạo Alias IP WinServer2012</em>
+  <em>Hình 3: Tạo Alias IP WinServer2012</em>
 </p>
 
 
@@ -76,7 +76,7 @@ Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forwa
 <p align="center">
   <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/d9435b14-77f8-4c6a-8917-7db968a81349" />
   <br>
-  <em>Hình 3: Trỏ NAT Port Forward vào Win Server 2012 và các log của gói tin sẽ được Rule này giám sát</em>
+  <em>Hình 4: Trỏ NAT Port Forward vào Win Server 2012 và các log của gói tin sẽ được Rule này giám sát</em>
 </p>
 
 
