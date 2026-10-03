@@ -4,7 +4,7 @@
 
 > Trong quá trình thực hiện Lab, từ kinh nghiệm thực tế, có thể áp dụng một số phương pháp cài đặt và cấu hình nhằm rút ngắn thời gian triển khai, giảm các thao tác thủ công và nâng cao hiệu quả thực hiện.
 
-Do lab chạy ảo hóa lồng nhau nên tốc độ Internet trong các máy ảo giảm rất nhiều, tải trực tiếp bộ cài trên Windows Server 2012 vừa chậm vừa dễ lỗi.
+Do lab chạy trên môi trường ảo hóa nên tốc độ Internet trong các máy ảo giảm rất nhiều, tải trực tiếp bộ cài trên Windows Server 2012 vừa chậm vừa dễ lỗi.
 
 
 | Bước | Thao tác | 
