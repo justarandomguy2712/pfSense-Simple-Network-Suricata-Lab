@@ -160,7 +160,7 @@ icmp && frame.len == 142
 <p align="center">
   <img width="1085" height="572" alt="Screenshot 2026-10-03 120111" src="https://github.com/user-attachments/assets/1a356e02-3af8-4f7d-bc3d-74d97a82fc37" />
   <br>
-  <em>Hình 8: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
+  <em>Hình 9: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
 </p>
 
 
