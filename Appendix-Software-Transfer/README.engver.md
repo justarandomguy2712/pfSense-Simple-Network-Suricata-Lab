@@ -1,5 +1,9 @@
 # Transferring Software to a Virtual Machine Without Internet Access
 
+
+
+🌐 **Language:** **English** | [Vietnamese](README.viever.md)
+
 *Installing software on Windows Server 2012 without Internet access*
 
 > Based on practical experience during the Lab implementation, several installation and configuration methods can be applied to reduce deployment time, minimize repetitive manual operations, and improve overall efficiency.
