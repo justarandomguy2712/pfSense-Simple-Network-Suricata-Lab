@@ -223,6 +223,17 @@ Sử dụng Nmap để xác thực khả năng truy cập và trạng thái củ
 nmap -Pn -p 21,80,443,445,3389,5985 192.168.10.1
 ```
 
+**Giải thích nhanh câu lệnh Ping**
+
+| Thành phần | Ý nghĩa |
+|------------|---------|
+| `nmap` | Công cụ quét cổng và phát hiện dịch vụ |
+| `-Pn` | -Pn là lệnh dùng để bỏ qua giai đoạn thăm dò máy chủ (Host Discovery) và mặc định coi tất cả các IP mục tiêu đều đang hoạt động. |
+| `-p 21,80,443,445,3389,5985` | Chỉ quét 6 cổng trong alias `Ports_Test`: FTP (21), HTTP (80), HTTPS (443), SMB (445), RDP (3389), WinRM (5985) |
+| `192.168.10.1` | IP WAN của pfSense |
+
+
+
 <p align="center">
   <img width="600" alt="Quet cổng mạng bằng Nmap" src="https://github.com/user-attachments/assets/4b14cbc1-136b-4483-b1a7-ce6484958b2b" />
   <br>
@@ -239,17 +250,7 @@ Sử dụng Nmap để kiểm thử và xác thực khả năng chặn truy cậ
 nmap -Pn -p 3306 192.168.10.1
 ```
 
-
-| Thành phần | Ý nghĩa |
-|------------|---------|
-| `nmap` | Công cụ quét cổng và phát hiện dịch vụ |
-| `-Pn` | -Pn là lệnh dùng để bỏ qua giai đoạn thăm dò máy chủ (Host Discovery) và mặc định coi tất cả các IP mục tiêu đều đang hoạt động. |
-| `-p 21,80,443,445,3389,5985` | Chỉ quét 6 cổng trong alias `Ports_Test`: FTP (21), HTTP (80), HTTPS (443), SMB (445), RDP (3389), WinRM (5985) |
-| `192.168.10.1` | IP WAN của pfSense |
-
-
-
-
+`-p 3306`  chỉ quét cổng MySQL, cổng này không có trong `Ports_Test` nên phải bị chặn.
 
 
 
