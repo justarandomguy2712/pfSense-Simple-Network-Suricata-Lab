@@ -31,7 +31,7 @@ Xác minh pfSense hoạt động đúng vai trò Firewall biên: chỉ expose c�
 
 
 
-**Hướng dẫn cách add Rule**: Firewall → NAT → Port Forward → Add -> Save -> Apply Changes, rồi điền như ảnh dưới
+**Hướng dẫn cách add Rule**: Firewall → NAT → Port Forward → Add rồi điền như ảnh dưới, sau đó thì Save -> Apply Changes
 
 
 <p align="center">
