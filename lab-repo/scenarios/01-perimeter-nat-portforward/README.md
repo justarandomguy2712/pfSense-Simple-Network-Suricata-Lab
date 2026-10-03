@@ -35,20 +35,7 @@ Alias gom các nhóm ports vào một tên để dùng lại trong NAT và Firew
   <em>Hình 2: Tạo các Aliases cho phép các cổng chỉ định được phép đi qua </em>
 </p>
 
-### 2. Tạo NAT Port Forward trỏ vào WinServer 2012
-- Tick "Log packets that are handled by this rule" trên rule WAN tương ứng và NAT Port Forward trỏ vào WinServer2012 như sau:
-
-- Vào Firewall → NAT → Port Forward → Add rồi điền như ảnh dưới, sau đó thì Save -> Apply Changes
-
-
-<p align="center">
-  <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/d9435b14-77f8-4c6a-8917-7db968a81349" />
-  <br>
-  <em>Hình 3: Trỏ NAT Port Forward vào Win Server 2012 và các log của gói tin sẽ được Rule này giám sát</em>
-</p>
-
-
-### 3. Tạo Alias WinServer2012 (Host)
+### 2. Tạo Alias WinServer2012 (Host)
 
 Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forward và Firewall Rule. Sau này đổi IP chỉ cần sửa một chỗ.
 
@@ -80,13 +67,17 @@ Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forwa
 
 
 
+### 3. Tạo NAT Port Forward trỏ vào WinServer 2012
+- Tick "Log packets that are handled by this rule" trên rule WAN tương ứng và NAT Port Forward trỏ vào WinServer2012 như sau:
+
+- Vào Firewall → NAT → Port Forward → Add rồi điền như ảnh dưới, sau đó thì Save -> Apply Changes
 
 
-
-
-
-
-
+<p align="center">
+  <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/d9435b14-77f8-4c6a-8917-7db968a81349" />
+  <br>
+  <em>Hình 3: Trỏ NAT Port Forward vào Win Server 2012 và các log của gói tin sẽ được Rule này giám sát</em>
+</p>
 
 
 
