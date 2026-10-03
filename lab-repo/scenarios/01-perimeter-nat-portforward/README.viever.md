@@ -1,5 +1,7 @@
 # 01 — Perimeter Defense & NAT Port Forwarding
 
+🌐 **Ngôn ngữ:** **Tiếng Việt** | [English](README.engver.md)
+
 ## I. Mục tiêu
 
  
