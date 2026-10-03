@@ -48,7 +48,7 @@ Alias gom các nhóm ports vào một tên để dùng lại trong NAT và Firew
 </p>
 
 
-### 3. Tạo Alias `WinServer2012` (Host)
+### 3. Tạo Alias WinServer2012 (Host)
 
 Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forward và Firewall Rule. Sau này đổi IP chỉ cần sửa một chỗ.
 
@@ -62,7 +62,7 @@ Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forwa
 | IP or FQDN | `192.168.20.2` | IP LAN của WinServer |
 
 
-- Bấm **Save**, rồi **Apply Changes**.
+- Bấm **Save** -> **Apply Changes**.
 
 **Kiểm tra:** vào **Diagnostics → Tables**, chọn `WinServer2012`, thấy một dòng `192.168.20.2`.
 
