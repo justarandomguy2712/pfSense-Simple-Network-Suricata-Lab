@@ -9,7 +9,7 @@
 > Based on practical experience during the Lab implementation, several installation and configuration methods can be applied to reduce deployment time, minimize repetitive manual operations, and improve overall efficiency.
 
 
-Since the Lab is deployed in a virtualized environment, Internet connectivity inside the virtual machines can be significantly slower. Downloading installation packages directly on Windows Server 2012 is therefore time-consuming and may also result in download failures.
+Since the Lab is deployed in a virtualized environment, Internet connectivity inside the virtual machines could be pretty slow . Downloading installation packages directly on Windows Server 2012 is therefore time-consuming and may also result in download failures.
 
 
 | Step | Procedure | 
