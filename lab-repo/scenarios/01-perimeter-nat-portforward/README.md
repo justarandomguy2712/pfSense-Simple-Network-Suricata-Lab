@@ -47,14 +47,61 @@ Alias gom các nhóm ports vào một tên để dùng lại trong NAT và Firew
   <em>Hình 3: Trỏ NAT Port Forward vào Win Server 2012 và các log của gói tin sẽ được Rule này giám sát</em>
 </p>
 
-### 3. Cấu hình và thực hiện Packet Capture trên WAN
-#### 3.1. Thiết lập Packet Capture trên giao diện WAN
+
+### 3. Tạo Alias `WinServer2012` (Host)
+
+Alias gán một tên cho IP LAN của WinServer, dùng lại ở NAT Port Forward và Firewall Rule. Sau này đổi IP chỉ cần sửa một chỗ.
+
+- Vào **Firewall → Aliases → IP → Add** điền như bảng sau: 
+
+| Mục | Cần điền | Ghi chú |
+|---|---------|---------|
+| Name | `WinServer2012` | Chỉ gồm chữ, số và dấu `_` |
+| Description | `IP LAN cua WinServer 2012` | Để dễ phân biệt và quản lý |
+| Type | `Host(s)` | Alias chứa địa chỉ IP |
+| IP or FQDN | `192.168.20.2` | IP LAN của WinServer |
+
+
+- Bấm **Save**, rồi **Apply Changes**.
+
+**Kiểm tra:** vào **Diagnostics → Tables**, chọn `WinServer2012`, thấy một dòng `192.168.20.2`.
+
+
+
+<p align="center">
+ <img width="1263" height="554" alt="Screenshot 2026-10-03 224328" src="https://github.com/user-attachments/assets/7414586d-6e5f-4f57-b782-7f2773050d2c" />
+  <br>
+  <em>Hình 4: Tạo Alias IP WinServer2012</em>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 4. Cấu hình và thực hiện Packet Capture trên WAN
+#### 4.1. Thiết lập Packet Capture trên giao diện WAN
 Vào Diagnostics → Packet Capture, điền như ảnh sau:
 
 <p align="center">
   <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/d35d1a7c-a2ef-46e4-8717-1a05763f4a8d" />
   <br>
-  <em>Hình 4: Cấu hình Packet Capture để bắt gói tin</em>
+  <em>Hình 5: Cấu hình Packet Capture để bắt gói tin</em>
 </p>
 
 **Giải thích nhanh các mục chính trong Packet Capture**: 
@@ -68,7 +115,7 @@ Vào Diagnostics → Packet Capture, điền như ảnh sau:
 | Name Lookup | Thực hiện phân giải tên DNS/port/MAC khi hiển thị packet |
 | HOST IP ADDRESS OR SUBNET | Lọc theo IP nguồn/đích hoặc subnet. |
 
-#### 3.2. Tạo traffic từ WinServer 2012 và thu capture 
+#### 4.2. Tạo traffic từ WinServer 2012 và thu capture 
 
 - Trên pfSense, kéo xuống cuối trang, bấm Start.
  
@@ -83,7 +130,7 @@ ping -n 4 -l 100 192.168.10.10
 <p align="center">
  <img width="677" height="340" alt="Screenshot 2026-10-03 115206" src="https://github.com/user-attachments/assets/8684edfd-b3e2-42d1-9f99-2687e9665f99" />
   <br>
-  <em>Hình 5: Lệnh ping từ WinServer 2012 đến 192.168.10.10</em>
+  <em>Hình 6: Lệnh ping từ WinServer 2012 đến 192.168.10.10</em>
 </p>
 
 **Giải thích nhanh về câu lệnh ping**:
@@ -109,10 +156,10 @@ icmp && frame.len == 142
 <p align="center">
 <img width="1619" height="164" alt="Screenshot 2026-10-03 115612" src="https://github.com/user-attachments/assets/b4b0b0a0-83aa-4166-b683-1176d7c3e797" />
   <br>
-  <em>Hình 6: Lọc gói tin ICMP có độ dài Frame 142 bytes bằng Wireshark</em>
+  <em>Hình 7: Lọc gói tin ICMP có độ dài Frame 142 bytes bằng Wireshark</em>
 </p>
 
-#### 3.3. Kiểm tra bảng State, địa chỉ gốc và trạng thái kết nối
+#### 4.3. Kiểm tra bảng State, địa chỉ gốc và trạng thái kết nối
 
 - Trên pfSense vào Diagnostics → States → States.
 
@@ -122,7 +169,7 @@ icmp && frame.len == 142
 <p align="center">
   <img width="1085" height="572" alt="Screenshot 2026-10-03 120111" src="https://github.com/user-attachments/assets/1a356e02-3af8-4f7d-bc3d-74d97a82fc37" />
   <br>
-  <em>Hình 7: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
+  <em>Hình 8: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
 </p>
 
 
@@ -213,7 +260,7 @@ nmap -Pn -p 3306 192.168.10.1
 
 ## V. Kết quả thu được
 
-### 1. Các Port được cho phép và Port bị phát hiện ngoài Alias
+### Các Port được cho phép và Port bị phát hiện ngoài Alias 
 
 | Ảnh | Nội dung |
 |---|---|
