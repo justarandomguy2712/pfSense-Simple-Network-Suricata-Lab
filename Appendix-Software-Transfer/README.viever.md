@@ -1,5 +1,8 @@
 # Đưa phần mềm vào máy ảo khi không có mạng
 
+🌐 **Ngôn Ngữ:** **Tiếng Việt** | [English](README.engver.md)
+
+
 *Cài phần mềm vào Windows Server 2012 khi không có Internet*
 
 > Trong quá trình thực hiện Lab, từ kinh nghiệm thực tế, có thể áp dụng một số phương pháp cài đặt và cấu hình nhằm rút ngắn thời gian triển khai, giảm các thao tác thủ công và nâng cao hiệu quả thực hiện.
