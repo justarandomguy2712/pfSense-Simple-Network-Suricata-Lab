@@ -1,6 +1,6 @@
 # Đưa phần mềm vào máy ảo khi không có mạng
 
-🌐 **Ngôn Ngữ:** **Tiếng Việt** | [English](README.engver.md)
+🌐 **Ngôn ngữ:** **Tiếng Việt** | [English](README.engver.md)
 
 
 *Cài phần mềm vào Windows Server 2012 khi không có Internet*
