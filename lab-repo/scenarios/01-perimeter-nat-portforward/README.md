@@ -160,7 +160,7 @@ icmp && frame.len == 142
 <p align="center">
   <img width="1085" height="572" alt="Screenshot 2026-10-03 120111" src="https://github.com/user-attachments/assets/1a356e02-3af8-4f7d-bc3d-74d97a82fc37" />
   <br>
-  <em>Hình 9: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
+  <em>Hình 8: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
 </p>
 
 
@@ -218,7 +218,7 @@ nmap -Pn -p 21,80,443,445,3389,5985 192.168.10.1
 <p align="center">
   <img width="600" alt="Quet cổng mạng bằng Nmap" src="https://github.com/user-attachments/assets/4b14cbc1-136b-4483-b1a7-ce6484958b2b" />
   <br>
-  <em>Hình 8: Câu lệnh tiến hành quét cổng mạng</em>
+  <em>Hình 9: Câu lệnh tiến hành quét cổng mạng</em>
 </p>
 
 
