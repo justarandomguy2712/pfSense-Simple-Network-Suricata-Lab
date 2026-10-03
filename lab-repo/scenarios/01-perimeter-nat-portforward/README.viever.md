@@ -3,7 +3,11 @@
 ## I. Mục tiêu
 
  
-Xác minh pfSense hoạt động đúng vai trò Firewall biên: chỉ expose các dịch vụ được cấp phép trên WAN, chặn mặc định các port còn lại và ghi log toàn bộ traffic. Đồng thời kiểm tra cơ chế NAT Outbound, chuyển IP nguồn của Windows Server 2012 từ `192.168.20.2` sang WAN `192.168.10.1` và dịch ngược gói tin trả về đúng máy đích.
+Xác minh pfSense hoạt động đúng vai trò Firewall biên:
+
+- Chỉ cho phép truy cập các cổng được cấp phép trên WAN (NAT Port Forward vào WinServer 2012).
+- Chặn mặc định các cổng còn lại và ghi log.
+- Kiểm tra NAT Outbound: IP nguồn của WinServer 2012 đổi từ 192.168.20.2 thành IP WAN 192.168.10.1, gói trả về được dịch ngược về đúng máy.
 
 ## II. Điều kiện để thực hiện bài lab
 - Lab đã dựng xong và mạng đã thông theo mô hình như ảnh:
@@ -143,6 +147,10 @@ ping -n 4 -l 100 192.168.10.10
 ```bash
 icmp && frame.len == 142
 ```
+**Độ dài 142 byte = 14 (Ethernet) + 20 (IP) + 8 (ICMP) + 100 (dữ liệu).**
+
+
+
 
 <p align="center">
 <img width="1619" height="164" alt="Screenshot 2026-10-03 115612" src="https://github.com/user-attachments/assets/b4b0b0a0-83aa-4166-b683-1176d7c3e797" />
@@ -175,7 +183,7 @@ icmp && frame.len == 142
 |-----|---------|
 | Interface | Traffic bị NAT hiện 2 dòng: LAN (trước NAT) và WAN (sau NAT) |
 | Source (Original Source) → Destination | Địa chỉ sau NAT, địa chỉ gốc nằm trong ngoặc |
-| State | `ESTABLISHED` = đã bắt tay xong đi theo cả 2 chiều, `NO_TRAFFIC:SINGLE` = chỉ có gói 1 chiều, `0:0` = ICMP |
+| State | `ESTABLISHED` = đã bắt tay xong đi theo cả 2 chiều, `SINGLE:NO_TRAFFIC` = chỉ có gói 1 chiều, `0:0` = ICMP |
 | Packets / Bytes | Số gói và dung lượng theo dạng `đi / về` |
 
 
@@ -266,4 +274,4 @@ nmap -Pn -p 3306 192.168.10.1
 - Các port trong `Ports_Test` trả lời `open` khi có service thật chạy trên WinServer.
 - Port ngoài danh sách (VD 3306) bị chặn, log ghi nhận **Block** bởi default-deny rule của WAN.
 - Firewall log xác nhận NAT đã dịch đúng địa chỉ đích từ IP WAN sang IP LAN thật của WinServer.
-- Traffic outbound chỉ đi ra qua các port được phép, source được dịch thành `192.168.10.1`.
+- Traffic outbound (ICMP ping từ WinServer) có source được dịch thành `192.168.10.1`, gói trả về được dịch ngược về `192.168.20.2`.
