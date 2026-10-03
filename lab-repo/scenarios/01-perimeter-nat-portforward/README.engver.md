@@ -1,5 +1,11 @@
 # 01 — Perimeter Defense & NAT Port Forwarding
 
+
+
+🌐 **Language:** **English** | [Vietnamese](README.viever.md)
+
+
+
 ## I. Objectives
 
 Verify that pfSense operates correctly as a perimeter firewall:
