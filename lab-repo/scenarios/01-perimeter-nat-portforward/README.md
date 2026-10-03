@@ -15,7 +15,18 @@ Xác minh pfSense hoạt động đúng vai trò Firewall biên: chỉ expose c�
   <em>Hình 1: Mô hình mạng lab cơ bản</em>
 </p>
 
-- Đã tạo Alias `Ports_Test` (21, 80, 443, 445, 3389, 5985):
+- Đã cài Wireshark trên Windows Server 2012
+- Firewall → NAT → Outbound ở chế độ Automatic outbound NAT (mặc định)
+
+
+
+## III. Các bước cấu hình đã thực hiện
+
+### 1. Tạo Alias `Ports_Test` 
+
+Alias gom các nhóm ports vào một tên để dùng lại trong NAT và Firewall Rule.
+
+- Vào Firewall → Aliases → Ports → Add (21, 80, 443, 445, 3389, 5985):
 
 
 <p align="center">
@@ -24,14 +35,10 @@ Xác minh pfSense hoạt động đúng vai trò Firewall biên: chỉ expose c�
   <em>Hình 2: Tạo các Aliases cho phép các cổng chỉ định được phép đi qua </em>
 </p>
 
+### 2. Tạo NAT Port Forward trỏ vào WinServer 2012
+- Tick "Log packets that are handled by this rule" trên rule WAN tương ứng và NAT Port Forward trỏ vào WinServer2012 như sau:
 
-
-
-- Đã tick "Log packets that are handled by this rule" trên rule WAN tương ứng và NAT Port Forward trỏ vào WinServer2012 như sau:
-
-
-
-**Hướng dẫn cách add Rule**: Firewall → NAT → Port Forward → Add rồi điền như ảnh dưới, sau đó thì Save -> Apply Changes
+- Vào Firewall → NAT → Port Forward → Add rồi điền như ảnh dưới, sau đó thì Save -> Apply Changes
 
 
 <p align="center">
@@ -40,12 +47,83 @@ Xác minh pfSense hoạt động đúng vai trò Firewall biên: chỉ expose c�
   <em>Hình 3: Trỏ NAT Port Forward vào Win Server 2012 và các log của gói tin sẽ được Rule này giám sát</em>
 </p>
 
-- Đã cài Wireshark trên Windows Server 2012
-- Firewall → NAT → Outbound ở chế độ Automatic outbound NAT (mặc định)
+### 3. Cấu hình và thực hiện Packet Capture trên WAN
+#### 3.1. Thiết lập Packet Capture trên giao diện WAN
+Vào Diagnostics → Packet Capture, điền như ảnh sau:
+
+<p align="center">
+  <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/d35d1a7c-a2ef-46e4-8717-1a05763f4a8d" />
+  <br>
+  <em>Hình 4: Cấu hình Packet Capture để bắt gói tin</em>
+</p>
+
+**Giải thích nhanh các mục chính trong Packet Capture**: 
 
 
+| Mục | Ý Nghĩa |
+|------------|---------|
+| Capture Options | Chọn interface cần bắt gói tin. Ảnh đang chọn WAN (em0). |
+| Promiscuous Mode | 	Bắt toàn bộ gói thấy được |
+| Max number of packets to capture | Số lượng packet tối đa cần bắt |
+| Name Lookup | Thực hiện phân giải tên DNS/port/MAC khi hiển thị packet |
+| HOST IP ADDRESS OR SUBNET | Lọc theo IP nguồn/đích hoặc subnet. |
 
-## III. Các bước cấu hình đã thực hiện
+#### 3.2. Tạo traffic từ WinServer 2012 và thu capture 
+
+- Trên pfSense, kéo xuống cuối trang, bấm Start.
+ 
+- Ngay sau đó, trên WinServer (CMD), chạy câu lệnh sau:
+
+
+```bash
+ping -n 4 -l 100 192.168.10.10
+```
+
+
+<p align="center">
+ <img width="677" height="340" alt="Screenshot 2026-10-03 115206" src="https://github.com/user-attachments/assets/8684edfd-b3e2-42d1-9f99-2687e9665f99" />
+  <br>
+  <em>Hình 5: Lệnh ping từ WinServer 2012 đến 192.168.10.10</em>
+</p>
+
+**Giải thích nhanh về câu lệnh ping**:
+
+
+| Thành phần | Ý nghĩa |
+|------------|---------|
+| `ping` | Kiểm tra khả năng kết nối mạng tới máy đích bằng ICMP |
+| `-n 4` | Gửi 4 gói tin ICMP |
+| `-l 100` | Đặt kích thước dữ liệu trong mỗi gói ICMP là 100 bytes |
+| `192.168.10.10` | Địa chỉ IP đích cần kiểm tra |
+
+
+- Ping xong, quay lại pfSense bấm Stop (giữ dưới 15 giây), rồi Download Capture.
+
+ 
+- Mở file bằng Wireshark, ô lọc nhập:
+
+```bash
+icmp && frame.len == 142
+```
+
+<p align="center">
+<img width="1619" height="164" alt="Screenshot 2026-10-03 115612" src="https://github.com/user-attachments/assets/b4b0b0a0-83aa-4166-b683-1176d7c3e797" />
+  <br>
+  <em>Hình 6: Lọc gói tin ICMP có độ dài Frame 142 bytes bằng Wireshark</em>
+</p>
+
+#### 3.3. Kiểm tra bảng State, địa chỉ gốc và trạng thái kết nối
+
+- Trên pfSense vào Diagnostics → States → States.
+
+Điền các thông số như ảnh dưới như sau:
+
+
+<p align="center">
+  <img width="1085" height="572" alt="Screenshot 2026-10-03 120111" src="https://github.com/user-attachments/assets/1a356e02-3af8-4f7d-bc3d-74d97a82fc37" />
+  <br>
+  <em>Hình 7: Hai dòng state ICMP: trước NAT (LAN) và sau NAT (WAN).</em>
+</p>
 
 
 
@@ -68,12 +146,13 @@ Sử dụng Nmap để xác thực khả năng truy cập và trạng thái củ
 nmap -Pn -p 21,80,443,445,3389,5985 192.168.10.1
 ```
 
-
 <p align="center">
   <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/4b14cbc1-136b-4483-b1a7-ce6484958b2b" />
   <br>
-  <em>Hình 4: Câu lệnh tiến hành quét cổng mạng</em>
+  <em>Hình 8: Câu lệnh tiến hành quét cổng mạng</em>
 </p>
+
+
 
 #### 1.2. Từ Kali Linux, tiến hành quét cổng mạng port không nằm trong ports được cho phép: 
 
@@ -99,12 +178,11 @@ nmap -Pn -p 3306 192.168.10.1
 
 
 
-<img width="1141" height="167" alt="Screenshot 2026-10-01 102015" src="https://github.com/user-attachments/assets/a7efdd7c-a442-49ee-99f3-6e3d71d101ac" />
-
 
 
 ## V. Kết quả thu được
 
+### 1. Các Port được cho phép và Port bị phát hiện ngoài Alias
 
 | Ảnh | Nội dung |
 |---|---|
@@ -114,7 +192,9 @@ nmap -Pn -p 3306 192.168.10.1
 
 
 
+
 ## VI. Kết quả mong đợi
-- Các port trong `Lab_Ports` trả lời `open` khi có service thật chạy trên WinServer.
+- Các port trong `Ports_Test` trả lời `open` khi có service thật chạy trên WinServer.
 - Port ngoài danh sách (VD 3306) bị chặn, log ghi nhận **Block** bởi default-deny rule của WAN.
 - Firewall log xác nhận NAT đã dịch đúng địa chỉ đích từ IP WAN sang IP LAN thật của WinServer.
+- Traffic outbound chỉ đi ra qua các port được phép, source được dịch thành `192.168.10.1`.
