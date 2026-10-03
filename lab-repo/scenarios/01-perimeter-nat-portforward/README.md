@@ -126,6 +126,34 @@ icmp && frame.len == 142
 </p>
 
 
+####Giải thích bảng States (Diagnostics → States)
+
+**Bộ lọc:** Interface `all`, Filter expression `192.168.20.2` (chỉ lấy state của WinServer). Không bấm **Kill States** vì nút này ngắt kết nối đang chạy.
+
+| Cột | Ý nghĩa |
+|-----|---------|
+| Interface | Traffic bị NAT hiện 2 dòng: LAN (trước NAT) và WAN (sau NAT) |
+| Source (Original Source) → Destination | Địa chỉ sau NAT, địa chỉ gốc nằm trong ngoặc |
+| State | `ESTABLISHED` = đã bắt tay xong đi theo cả 2 chiều, `NO_TRAFFIC:SINGLE` = chỉ có gói 1 chiều, `0:0` = ICMP |
+| Packets / Bytes | Số gói và dung lượng theo dạng `đi / về` |
+
+
+
+---
+
+
+
+| STT | Interface | Luồng | Phân tích |
+|-----|-----------|-------|-----------|
+| 1 | LAN | `tcp 192.168.20.2:49170 → 192.168.20.1:80` | WinServer mở trang quản trị pfSense, traffic nội bộ |
+| 2 | LAN | `udp 192.168.20.2:137 → 192.168.20.255:137` | NetBIOS broadcast, không có trả lời (3 / 0)|
+| 3 | LAN | `icmp 192.168.20.2:1 → 192.168.10.10:8` | Gói ping trước NAT |
+| 4 | WAN | `icmp 192.168.10.1:14119 (192.168.20.2:1) → 192.168.10.10:8` | Gói ping sau NAT, source thành IP WAN, bên trong ngoặc là địa chỉ gốc |
+
+**Với ICMP, số sau dấu `:` không phải cổng:** `:1` và `:14119` là ICMP ID (pfSense đổi ID để phân biệt các luồng ping), `:8` là type 8 = Echo request.
+
+
+
 
 
 
@@ -147,7 +175,7 @@ nmap -Pn -p 21,80,443,445,3389,5985 192.168.10.1
 ```
 
 <p align="center">
-  <img width="600" alt="Cấu hình SMTP Gmail" src="https://github.com/user-attachments/assets/4b14cbc1-136b-4483-b1a7-ce6484958b2b" />
+  <img width="600" alt="Quet cổng mạng bằng Nmap" src="https://github.com/user-attachments/assets/4b14cbc1-136b-4483-b1a7-ce6484958b2b" />
   <br>
   <em>Hình 8: Câu lệnh tiến hành quét cổng mạng</em>
 </p>
